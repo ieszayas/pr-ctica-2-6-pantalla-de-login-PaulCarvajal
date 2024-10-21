@@ -1,7 +1,13 @@
 package vistacontrolador;
 
+import java.awt.Color;
+import java.awt.Point;
+import static java.lang.System.exit;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
 import modelo.Usuario;
 import static modelo.Usuario.usuariosHarcodeados;
 
@@ -34,9 +40,16 @@ public class Ventana_Principal extends javax.swing.JFrame {
         Titulo_Bienvenido.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         Titulo_Bienvenido.setText("Bienvenid@");
 
-        Boton_cerrrar_sesion.setText("Cerrar sesion");
+        Texto_Usuario_Logueado.setText("El usuario Pol esta logueado");
 
-        Imagen_sesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistacontrolador/image_cambio.png"))); // NOI18N
+        Boton_cerrrar_sesion.setText("Cerrar sesion");
+        Boton_cerrrar_sesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_cerrrar_sesionActionPerformed(evt);
+            }
+        });
+
+        Imagen_sesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistacontrolador/icono.png"))); // NOI18N
 
         javax.swing.GroupLayout PrincipalLayout = new javax.swing.GroupLayout(Principal.getContentPane());
         Principal.getContentPane().setLayout(PrincipalLayout);
@@ -47,13 +60,16 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addComponent(Boton_cerrrar_sesion, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
             .addGroup(PrincipalLayout.createSequentialGroup()
-                .addGap(76, 76, 76)
                 .addGroup(PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Texto_Usuario_Logueado)
-                    .addComponent(Titulo_Bienvenido)
                     .addGroup(PrincipalLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(Imagen_sesion, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(115, 115, 115)
+                        .addComponent(Imagen_sesion))
+                    .addGroup(PrincipalLayout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(Titulo_Bienvenido))
+                    .addGroup(PrincipalLayout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(Texto_Usuario_Logueado, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PrincipalLayout.setVerticalGroup(
@@ -63,9 +79,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addComponent(Titulo_Bienvenido)
                 .addGap(18, 18, 18)
                 .addComponent(Imagen_sesion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(Texto_Usuario_Logueado)
-                .addGap(41, 41, 41)
+                .addGap(38, 38, 38)
+                .addComponent(Texto_Usuario_Logueado, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(Boton_cerrrar_sesion)
                 .addGap(16, 16, 16))
         );
@@ -149,36 +165,44 @@ public class Ventana_Principal extends javax.swing.JFrame {
         for (int i = 0; i < Caja_contraseña.getPassword().length; i++) {
             contraseña += Caja_contraseña.getPassword()[i];
         }
-        
+
         existeUsuario(usuario, contraseña);
 
     }//GEN-LAST:event_Boton_loginActionPerformed
 
-    public  void existeUsuario(String usuario, String contraseña) {
+    public void existeUsuario(String usuario, String contraseña) {
+        Border rojo = BorderFactory.createLineBorder(Color.RED, 2);
         ArrayList<Usuario> usuarios = usuariosHarcodeados();
         boolean existe = false;
         for (Usuario it : usuarios) {
             if (usuario.equalsIgnoreCase(it.getNombre()) && contraseña.equalsIgnoreCase(it.getContrasenia())) {
                 //irse a la otra ventana
-                Principal.setSize(300,300);
+                Principal.setSize(300, 300);
                 Texto_Usuario_Logueado.setText("El usuario " + usuario + " esta logueado");
                 Principal.setLocationRelativeTo(this);
                 Principal.setVisible(true);
                 return;
             }
         }
-        
-        if(!existe){
+
+        if (!existe) {
             JOptionPane.showMessageDialog(null, "El usuario no existe" + "\n" + "Por favor vuelva a introducir las credenciales", "Usuario no encontrado", JOptionPane.WARNING_MESSAGE);
-            reset();
+
+            vibrarVentana(this, 3, 60);
         }
-        
+        reset();
+        Caja_contraseña.setBorder(rojo);
+        Caja_usuario.setBorder(rojo);
     }
-    
-    public void reset(){
+
+    public void reset() {
+        //Border original = BorderFactory.createLineBorder(Color.red);
         Caja_usuario.setText("");
         Caja_contraseña.setText("");
+
     }
+
+
     private void Check_mostrar_contraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Check_mostrar_contraseñaActionPerformed
         if (Check_mostrar_contraseña.isSelected()) {
             Caja_contraseña.setEchoChar((char) 0);
@@ -186,6 +210,28 @@ public class Ventana_Principal extends javax.swing.JFrame {
             Caja_contraseña.setEchoChar('*');
         }
     }//GEN-LAST:event_Check_mostrar_contraseñaActionPerformed
+
+    private void Boton_cerrrar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_cerrrar_sesionActionPerformed
+        Principal.dispose();
+        reset();
+    }//GEN-LAST:event_Boton_cerrrar_sesionActionPerformed
+
+    public void vibrarVentana(JFrame frame, int intensidad, int duracion) {
+        Point puntoOriginal = frame.getLocation();
+
+        for (int i = 0; i < duracion; i++) {
+            int x = puntoOriginal.x + (int) (Math.random() * intensidad) - (intensidad / 2);
+            int y = puntoOriginal.y + (int) (Math.random() * intensidad) - (intensidad / 2);
+            frame.setLocation(x, y);
+
+            // Hacemos una pausa breve entre los movimientos
+            try {
+                Thread.sleep(20); // Pausa de 20 ms entre cada movimiento
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
