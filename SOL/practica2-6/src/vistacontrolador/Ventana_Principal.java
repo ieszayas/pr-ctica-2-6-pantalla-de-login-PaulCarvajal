@@ -29,11 +29,10 @@ public class Ventana_Principal extends javax.swing.JFrame {
         Boton_login = new javax.swing.JButton();
 
         Principal.setTitle("Principal");
+        Principal.setResizable(false);
 
         Titulo_Bienvenido.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         Titulo_Bienvenido.setText("Bienvenid@");
-
-        Texto_Usuario_Logueado.setText("El usuario a esta logueado");
 
         Boton_cerrrar_sesion.setText("Cerrar sesion");
 
@@ -64,7 +63,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addComponent(Titulo_Bienvenido)
                 .addGap(18, 18, 18)
                 .addComponent(Imagen_sesion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(Texto_Usuario_Logueado)
                 .addGap(41, 41, 41)
                 .addComponent(Boton_cerrrar_sesion)
@@ -161,6 +160,10 @@ public class Ventana_Principal extends javax.swing.JFrame {
         for (Usuario it : usuarios) {
             if (usuario.equalsIgnoreCase(it.getNombre()) && contraseña.equalsIgnoreCase(it.getContrasenia())) {
                 //irse a la otra ventana
+                Principal.setSize(300,300);
+                Texto_Usuario_Logueado.setText("El usuario " + usuario + " esta logueado");
+                Principal.setLocationRelativeTo(this);
+                Principal.setVisible(true);
                 return;
             }
         }
