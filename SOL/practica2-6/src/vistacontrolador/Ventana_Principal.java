@@ -8,6 +8,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
+import static modelo.GestorBBDD.crearBD;
 import modelo.Usuario;
 import static modelo.Usuario.usuariosHarcodeados;
 
@@ -15,6 +16,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     public Ventana_Principal() {
         initComponents();
+        crearBD();
     }
 
     @SuppressWarnings("unchecked")
@@ -26,6 +28,27 @@ public class Ventana_Principal extends javax.swing.JFrame {
         Texto_Usuario_Logueado = new javax.swing.JLabel();
         Boton_cerrrar_sesion = new javax.swing.JButton();
         Imagen_sesion = new javax.swing.JLabel();
+        BotonNuevo = new javax.swing.JButton();
+        NuevaCuenta = new javax.swing.JFrame();
+        TextoNuevo = new javax.swing.JLabel();
+        TextoUsuario = new javax.swing.JLabel();
+        CajaTextoNewUsuario = new javax.swing.JTextField();
+        CajaTextoNewContra = new javax.swing.JTextField();
+        CajaConfContraseña = new javax.swing.JTextField();
+        TextoContraseña = new javax.swing.JLabel();
+        TextoConfContra = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        TextoOpcional = new javax.swing.JLabel();
+        CajaNombre = new javax.swing.JTextField();
+        CajaApellido = new javax.swing.JTextField();
+        CajaFecha = new javax.swing.JTextField();
+        CajaCorreo = new javax.swing.JTextField();
+        TextoNombre = new javax.swing.JLabel();
+        TextoApellido = new javax.swing.JLabel();
+        TextoFecha = new javax.swing.JLabel();
+        TextoCorreo = new javax.swing.JLabel();
+        BotonVolver = new javax.swing.JButton();
+        BotonAgregar = new javax.swing.JButton();
         Texto_login = new javax.swing.JLabel();
         Texto_Usuario = new javax.swing.JLabel();
         Texto_contraseña = new javax.swing.JLabel();
@@ -33,6 +56,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         Check_mostrar_contraseña = new javax.swing.JCheckBox();
         Caja_contraseña = new javax.swing.JPasswordField();
         Boton_login = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         Principal.setTitle("Principal");
         Principal.setResizable(false);
@@ -51,14 +75,12 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         Imagen_sesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistacontrolador/icono.png"))); // NOI18N
 
+        BotonNuevo.setText("Nuevo usuario");
+
         javax.swing.GroupLayout PrincipalLayout = new javax.swing.GroupLayout(Principal.getContentPane());
         Principal.getContentPane().setLayout(PrincipalLayout);
         PrincipalLayout.setHorizontalGroup(
             PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PrincipalLayout.createSequentialGroup()
-                .addGap(0, 29, Short.MAX_VALUE)
-                .addComponent(Boton_cerrrar_sesion, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
             .addGroup(PrincipalLayout.createSequentialGroup()
                 .addGroup(PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PrincipalLayout.createSequentialGroup()
@@ -66,11 +88,19 @@ public class Ventana_Principal extends javax.swing.JFrame {
                         .addComponent(Imagen_sesion))
                     .addGroup(PrincipalLayout.createSequentialGroup()
                         .addGap(76, 76, 76)
-                        .addComponent(Titulo_Bienvenido))
-                    .addGroup(PrincipalLayout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(Texto_Usuario_Logueado, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Titulo_Bienvenido)))
+                .addContainerGap(76, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PrincipalLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PrincipalLayout.createSequentialGroup()
+                        .addComponent(Texto_Usuario_Logueado, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PrincipalLayout.createSequentialGroup()
+                        .addGroup(PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BotonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Boton_cerrrar_sesion, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25))))
         );
         PrincipalLayout.setVerticalGroup(
             PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,9 +111,131 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addComponent(Imagen_sesion)
                 .addGap(38, 38, 38)
                 .addComponent(Texto_Usuario_Logueado, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addComponent(BotonNuevo)
+                .addGap(18, 18, 18)
                 .addComponent(Boton_cerrrar_sesion)
                 .addGap(16, 16, 16))
+        );
+
+        TextoNuevo.setText("Por favor introduzca la informacion del nuevo usuario:");
+
+        TextoUsuario.setText("Usuario:");
+
+        TextoContraseña.setText("Contraseña:");
+
+        TextoConfContra.setText("Confirmar contraseña:");
+
+        TextoOpcional.setText("Agregar datos opcionales del nuevo usuario:");
+
+        CajaApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CajaApellidoActionPerformed(evt);
+            }
+        });
+
+        TextoNombre.setText("Nombre:");
+
+        TextoApellido.setText("Apellido:");
+
+        TextoFecha.setText("Fecha de Nacimiento:");
+
+        TextoCorreo.setText("Correo:");
+
+        BotonVolver.setText("Volver");
+
+        BotonAgregar.setText("Agregar");
+
+        javax.swing.GroupLayout NuevaCuentaLayout = new javax.swing.GroupLayout(NuevaCuenta.getContentPane());
+        NuevaCuenta.getContentPane().setLayout(NuevaCuentaLayout);
+        NuevaCuentaLayout.setHorizontalGroup(
+            NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
+            .addGroup(NuevaCuentaLayout.createSequentialGroup()
+                .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(NuevaCuentaLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(NuevaCuentaLayout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(TextoNuevo))
+                            .addGroup(NuevaCuentaLayout.createSequentialGroup()
+                                .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(TextoContraseña)
+                                    .addComponent(TextoUsuario)
+                                    .addComponent(TextoConfContra))
+                                .addGap(44, 44, 44)
+                                .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(CajaTextoNewContra)
+                                    .addComponent(CajaTextoNewUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                                    .addComponent(CajaConfContraseña)))))
+                    .addGroup(NuevaCuentaLayout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(TextoOpcional))
+                    .addGroup(NuevaCuentaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TextoApellido, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TextoNombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TextoFecha, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TextoCorreo, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(44, 44, 44)
+                        .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(CajaNombre)
+                            .addComponent(CajaApellido)
+                            .addComponent(CajaFecha)
+                            .addComponent(CajaCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
+                        .addGap(14, 14, 14)))
+                .addContainerGap(81, Short.MAX_VALUE))
+            .addGroup(NuevaCuentaLayout.createSequentialGroup()
+                .addGap(116, 116, 116)
+                .addComponent(BotonVolver)
+                .addGap(61, 61, 61)
+                .addComponent(BotonAgregar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        NuevaCuentaLayout.setVerticalGroup(
+            NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(NuevaCuentaLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(TextoNuevo)
+                .addGap(18, 18, 18)
+                .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TextoUsuario)
+                    .addComponent(CajaTextoNewUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CajaTextoNewContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextoContraseña))
+                .addGap(18, 18, 18)
+                .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CajaConfContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextoConfContra))
+                .addGap(27, 27, 27)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TextoOpcional)
+                .addGap(18, 18, 18)
+                .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CajaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextoNombre))
+                .addGap(26, 26, 26)
+                .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CajaApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextoApellido))
+                .addGap(37, 37, 37)
+                .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CajaFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextoFecha))
+                .addGap(27, 27, 27)
+                .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CajaCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextoCorreo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BotonVolver)
+                    .addComponent(BotonAgregar))
+                .addGap(20, 20, 20))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -110,6 +262,18 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Hacer click para crear una nueva cuenta");
+        jLabel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jLabel1MouseDragged(evt);
+            }
+        });
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -133,7 +297,10 @@ public class Ventana_Principal extends javax.swing.JFrame {
                             .addComponent(Caja_contraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(Check_mostrar_contraseña)
-                        .addGap(31, 31, 31))))
+                        .addGap(31, 31, 31))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(82, 82, 82))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +318,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
                     .addComponent(Caja_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(Boton_login)
-                .addGap(65, 65, 65))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(31, 31, 31))
         );
 
         pack();
@@ -172,11 +341,15 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     public void existeUsuario(String usuario, String contraseña) {
         Border rojo = BorderFactory.createLineBorder(Color.RED, 2);
+        Border original = BorderFactory.createLineBorder(Color.gray);
         ArrayList<Usuario> usuarios = usuariosHarcodeados();
         boolean existe = false;
         for (Usuario it : usuarios) {
             if (usuario.equalsIgnoreCase(it.getNombre()) && contraseña.equalsIgnoreCase(it.getContrasenia())) {
+                
                 //irse a la otra ventana
+                Caja_contraseña.setBorder(original);
+                Caja_usuario.setBorder(original);
                 Principal.setSize(300, 300);
                 Texto_Usuario_Logueado.setText("El usuario " + usuario + " esta logueado");
                 Principal.setLocationRelativeTo(this);
@@ -196,7 +369,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }
 
     public void reset() {
-        //Border original = BorderFactory.createLineBorder(Color.red);
         Caja_usuario.setText("");
         Caja_contraseña.setText("");
 
@@ -215,6 +387,18 @@ public class Ventana_Principal extends javax.swing.JFrame {
         Principal.dispose();
         reset();
     }//GEN-LAST:event_Boton_cerrrar_sesionActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        System.out.println("Hola");
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel1MouseDragged
+
+    private void CajaApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CajaApellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CajaApellidoActionPerformed
 
     public void vibrarVentana(JFrame frame, int intensidad, int duracion) {
         Point puntoOriginal = frame.getLocation();
@@ -266,17 +450,39 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonAgregar;
+    private javax.swing.JButton BotonNuevo;
+    private javax.swing.JButton BotonVolver;
     private javax.swing.JButton Boton_cerrrar_sesion;
     private javax.swing.JButton Boton_login;
+    private javax.swing.JTextField CajaApellido;
+    private javax.swing.JTextField CajaConfContraseña;
+    private javax.swing.JTextField CajaCorreo;
+    private javax.swing.JTextField CajaFecha;
+    private javax.swing.JTextField CajaNombre;
+    private javax.swing.JTextField CajaTextoNewContra;
+    private javax.swing.JTextField CajaTextoNewUsuario;
     private javax.swing.JPasswordField Caja_contraseña;
     private javax.swing.JTextField Caja_usuario;
     private javax.swing.JCheckBox Check_mostrar_contraseña;
     private javax.swing.JLabel Imagen_sesion;
+    private javax.swing.JFrame NuevaCuenta;
     private javax.swing.JFrame Principal;
+    private javax.swing.JLabel TextoApellido;
+    private javax.swing.JLabel TextoConfContra;
+    private javax.swing.JLabel TextoContraseña;
+    private javax.swing.JLabel TextoCorreo;
+    private javax.swing.JLabel TextoFecha;
+    private javax.swing.JLabel TextoNombre;
+    private javax.swing.JLabel TextoNuevo;
+    private javax.swing.JLabel TextoOpcional;
+    private javax.swing.JLabel TextoUsuario;
     private javax.swing.JLabel Texto_Usuario;
     private javax.swing.JLabel Texto_Usuario_Logueado;
     private javax.swing.JLabel Texto_contraseña;
     private javax.swing.JLabel Texto_login;
     private javax.swing.JLabel Titulo_Bienvenido;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import static modelo.GestorBBDD.cargarUsuarios;
 
 public class Usuario {
     private String nombre;
@@ -38,11 +39,7 @@ public class Usuario {
     
     
     public static ArrayList<Usuario> usuariosHarcodeados(){
-        ArrayList<Usuario> usuarios = new ArrayList();
-        usuarios.add(new Usuario("Pol", "1234"));
-        usuarios.add(new Usuario("Kevin", "5678"));
-        usuarios.add(new Usuario("Adriana", "1234"));
-        usuarios.add(new Usuario("Jorge", "5678"));
+        ArrayList<Usuario> usuarios = cargarUsuarios();
         return usuarios;
     }
     
