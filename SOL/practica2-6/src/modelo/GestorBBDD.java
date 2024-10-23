@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 public class GestorBBDD {
@@ -88,16 +89,19 @@ public class GestorBBDD {
 
         try {
             pstm = con.prepareStatement("CREATE TABLE IF NOT EXISTS Usuarios("
-                    + "usuario VARCHAR (20), "
+                    + "usuario VARCHAR (20) PRIMARY KEY, "
                     + "contraseña VARCHAR (30),"
-                    + "PRIMARY KEY(usuario, contraseña));");
+                    + "nombre VARCHAR (20), "
+                    + "apellido VARCHAR (30), "
+                    + "fecha_nacimiento DATE, "
+                    + "correo VARCHAR (20));");
             pstm.executeUpdate();
             
-            pstm = con.prepareStatement("INSERT IGNORE INTO Usuarios (usuario, contraseña) "
-                    + "VALUES ('Pol', '1234'), "
-                    + "('Kevin', '1234'), "
-                    + "('Adriana', '1234'), "
-                    + "('Jorge', '1234');");
+            pstm = con.prepareStatement("INSERT IGNORE INTO Usuarios (usuario, contraseña, nombre, apellido, fecha_nacimiento, correo) "
+                    + "VALUES ('Pol', '1234', 'Paul', null, null, null), "
+                    + "('Kevin', '1234', null, null, null, null), "
+                    + "('Adriana', '1234', null, null, null, null), "
+                    + "('Jorge', '1234', null, null, null, null);");
             pstm.executeUpdate();
         } catch (SQLException e) {
             System.out.println("No se ha podido crear la Tabla usuarios");
@@ -127,7 +131,11 @@ public class GestorBBDD {
             while (rs.next()) {
                 String nick = rs.getString("usuario");
                 String contraseña = rs.getString("contraseña");
-                Usuario u1 = new Usuario(nick, contraseña);
+                String nombre = rs.getString("nombre");
+                String apellido = rs.getString("apellido");
+                Date fecha = rs.getDate("fecha_nacimiento");
+                String correo = rs.getString("correo");
+                Usuario u1 = new Usuario(nick, contraseña, nombre, apellido, fecha, correo);
                 usuarios.add(u1);
             }
 

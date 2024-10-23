@@ -487,9 +487,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonNuevoActionPerformed
 
     private void Caja_usuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Caja_usuarioKeyReleased
-//        if(Caja_usuario.getText().equals("")){
-//            ponerCajasOriginal(Caja_usuario, Caja_contraseña);
-//        }
+        ponerCajasOriginal(Caja_usuario, Caja_contraseña);
+        TextoError.setVisible(false);
     }//GEN-LAST:event_Caja_usuarioKeyReleased
 
     private void esconderMostrarTextos(JLabel j, boolean visible) {
@@ -500,7 +499,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
         j.setVisible(false);
 
     }
-
+    
+    //este metodo recibe como entrada los Jtext fiel que son las cajas que van a cambiar el color del borde
     private void ponerCajasRojas(JTextField j, JTextField f) {
         Border rojo = BorderFactory.createLineBorder(Color.RED, 2);
         j.setBorder(rojo);

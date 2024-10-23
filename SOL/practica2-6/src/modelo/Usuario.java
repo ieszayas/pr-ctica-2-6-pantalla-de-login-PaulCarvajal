@@ -1,15 +1,24 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import static modelo.GestorBBDD.cargarUsuarios;
 
 public class Usuario {
-    private String nombre;
+    private String usuario;
     private String contrasenia;
+    private String nombre;
+    private String apellido;
+    private Date fecha_nacimiento;
+    private String correo;
     
-    public Usuario(String nombre, String contrasenia){
-        this.nombre = nombre;
+    public Usuario(String usuario, String contrasenia, String nombre, String apellido, Date fecha_nacimiento, String correo){
+        this.usuario = usuario;
         this.contrasenia = contrasenia;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fecha_nacimiento = fecha_nacimiento;
+        this.correo = correo;
     }
     
     public Usuario(){
