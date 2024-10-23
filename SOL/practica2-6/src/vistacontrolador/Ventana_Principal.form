@@ -102,38 +102,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jSeparator1" alignment="1" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-                                  <Component id="BotonVolver" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                                  <Component id="BotonAgregar" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                          <Component id="TextoOpcional" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="TextoApellido" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="TextoNombre" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="TextoFecha" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="TextoCorreo" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="CajaNombre" max="32767" attributes="0"/>
-                                              <Component id="CajaApellido" max="32767" attributes="0"/>
-                                              <Component id="CajaFecha" max="32767" attributes="0"/>
-                                              <Component id="CajaCorreo" min="-2" pref="132" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                                   <Component id="TextoNuevo" min="-2" max="-2" attributes="0"/>
@@ -155,10 +126,39 @@
                                       </Group>
                                   </Group>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                          <Component id="TextoOpcional" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="TextoApellido" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="TextoNombre" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="TextoFecha" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="TextoCorreo" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="CajaNombre" max="32767" attributes="0"/>
+                                              <Component id="CajaApellido" max="32767" attributes="0"/>
+                                              <Component id="CajaCorreo" pref="132" max="32767" attributes="0"/>
+                                              <Component id="FechaNacimiento" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+                                  <Component id="BotonVolver" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                                  <Component id="BotonAgregar" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="0" pref="71" max="32767" attributes="0"/>
+                          <EmptySpace pref="82" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jSeparator1" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -188,7 +188,7 @@
                   <Component id="TextoErrorContra" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="TextoOpcional" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -201,21 +201,21 @@
                       <Component id="TextoApellido" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="CajaFecha" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TextoFecha" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="TextoFecha" min="-2" max="-2" attributes="0"/>
+                      <Component id="FechaNacimiento" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="CajaCorreo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="TextoCorreo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <EmptySpace pref="59" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="BotonVolver" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BotonAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -264,8 +264,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CajaApellidoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="CajaFecha">
-        </Component>
         <Component class="javax.swing.JTextField" name="CajaCorreo">
         </Component>
         <Component class="javax.swing.JLabel" name="TextoNombre">
@@ -307,6 +305,11 @@
         <Component class="javax.swing.JLabel" name="TextoErrorContra">
           <Properties>
             <Property name="text" type="java.lang.String" value="*La contrase&#xf1;a no coincide"/>
+          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="FechaNacimiento">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
           </Properties>
         </Component>
       </SubComponents>

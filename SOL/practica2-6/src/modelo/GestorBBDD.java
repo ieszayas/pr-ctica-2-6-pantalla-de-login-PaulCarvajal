@@ -98,7 +98,7 @@ public class GestorBBDD {
             pstm.executeUpdate();
             
             pstm = con.prepareStatement("INSERT IGNORE INTO Usuarios (usuario, contraseña, nombre, apellido, fecha_nacimiento, correo) "
-                    + "VALUES ('Pol', '1234', 'Paul', null, null, null), "
+                    + "VALUES ('Pol', '1234', null, null, null, null), "
                     + "('Kevin', '1234', null, null, null, null), "
                     + "('Adriana', '1234', null, null, null, null), "
                     + "('Jorge', '1234', null, null, null, null);");
@@ -158,21 +158,50 @@ public class GestorBBDD {
         return usuarios;
     }
     
-    public static void crearNuevoUsuario(String usuario, String contraseña){
+    public static void crearNuevoUsuario(String usuario, String contraseña, String nombre, String apellido, Date fecha, String correo ){
         Connection con  = getConexion();
         PreparedStatement pstm = null;
         
         try {
-            pstm = con.prepareStatement("INSERT INTO usuarios (usuario, contraseña) "
-                    + "VALUES (?, ?);");
+            pstm = con.prepareStatement("INSERT INTO usuarios (usuario, contraseña, nombre, apellido, fecha_nacimiento, correo) "
+                    + "VALUES (?, ?, ?, ?, ?, ?);");
             pstm.setString(1, usuario);
             pstm.setString(2, contraseña);
+            
+            //Comprobacion nombre
+            if(nombre != null){
+                pstm.setString(3, nombre);
+            }else{
+                pstm.setNull(3, java.sql.Types.VARCHAR);
+            }
+            
+            //Comprobacion apellido
+            if(apellido != null){
+                pstm.setString(4, apellido);
+            }else{
+                pstm.setNull(4, java.sql.Types.VARCHAR);
+            }
+            
+            //Comprobacion fecha          
+            if(fecha != null){
+                pstm.setString(5, nombre);
+            }else{
+                pstm.setNull(5, java.sql.Types.DATE);
+            }
+            
+            //Comprobacion correo
+            if(correo != null){
+                pstm.setString(6, correo);
+            }else{
+                pstm.setNull(6, java.sql.Types.VARCHAR);
+            }
             
             pstm.executeUpdate();
             
         } catch (SQLException e) {
             System.out.println("No se ha podido crear el usuario " + usuario);
             System.out.println(e.getMessage());
+            e.printStackTrace();
         } finally {
             try {
                 if(pstm != null){
@@ -184,6 +213,7 @@ public class GestorBBDD {
             }
         }
     }
+    
     
     public static boolean controlExisteUsuario(String usuario, String contraseña){
         Connection con =  getConexion();

@@ -1,9 +1,12 @@
 package vistacontrolador;
 
+import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.demo.DateChooserPanel;
 import java.awt.Color;
 import java.awt.Point;
 import static java.lang.System.exit;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,6 +28,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         //TextoEnlace.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         TextoError.setVisible(false);
         TextoErrorContra.setVisible(false);
+        
 
         crearBD();
     }
@@ -51,7 +55,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
         TextoOpcional = new javax.swing.JLabel();
         CajaNombre = new javax.swing.JTextField();
         CajaApellido = new javax.swing.JTextField();
-        CajaFecha = new javax.swing.JTextField();
         CajaCorreo = new javax.swing.JTextField();
         TextoNombre = new javax.swing.JLabel();
         TextoApellido = new javax.swing.JLabel();
@@ -60,6 +63,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         BotonVolver = new javax.swing.JButton();
         BotonAgregar = new javax.swing.JButton();
         TextoErrorContra = new javax.swing.JLabel();
+        FechaNacimiento = new com.toedter.calendar.JDateChooser();
         Texto_login = new javax.swing.JLabel();
         Texto_Usuario = new javax.swing.JLabel();
         Texto_contraseña = new javax.swing.JLabel();
@@ -179,37 +183,17 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         TextoErrorContra.setText("*La contraseña no coincide");
 
+        FechaNacimiento.setDateFormatString("yyyy-MM-dd");
+
         javax.swing.GroupLayout NuevaCuentaLayout = new javax.swing.GroupLayout(NuevaCuenta.getContentPane());
         NuevaCuenta.getContentPane().setLayout(NuevaCuentaLayout);
         NuevaCuentaLayout.setHorizontalGroup(
             NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NuevaCuentaLayout.createSequentialGroup()
                 .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(NuevaCuentaLayout.createSequentialGroup()
                         .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(NuevaCuentaLayout.createSequentialGroup()
-                                .addGap(116, 116, 116)
-                                .addComponent(BotonVolver)
-                                .addGap(61, 61, 61)
-                                .addComponent(BotonAgregar))
-                            .addGroup(NuevaCuentaLayout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(NuevaCuentaLayout.createSequentialGroup()
-                                        .addGap(43, 43, 43)
-                                        .addComponent(TextoOpcional))
-                                    .addGroup(NuevaCuentaLayout.createSequentialGroup()
-                                        .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(TextoApellido, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(TextoNombre, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(TextoFecha, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(TextoCorreo, javax.swing.GroupLayout.Alignment.TRAILING))
-                                        .addGap(44, 44, 44)
-                                        .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(CajaNombre)
-                                            .addComponent(CajaApellido)
-                                            .addComponent(CajaFecha)
-                                            .addComponent(CajaCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(NuevaCuentaLayout.createSequentialGroup()
                                 .addGap(75, 75, 75)
                                 .addComponent(TextoNuevo))
@@ -225,9 +209,31 @@ public class Ventana_Principal extends javax.swing.JFrame {
                                     .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(CajaTextoNewContra)
                                         .addComponent(CajaTextoNewUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                                        .addComponent(CajaConfContraseña)))))
-                        .addGap(0, 71, Short.MAX_VALUE))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addComponent(CajaConfContraseña))))
+                            .addGroup(NuevaCuentaLayout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(NuevaCuentaLayout.createSequentialGroup()
+                                        .addGap(43, 43, 43)
+                                        .addComponent(TextoOpcional))
+                                    .addGroup(NuevaCuentaLayout.createSequentialGroup()
+                                        .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(TextoApellido, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(TextoNombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(TextoFecha, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(TextoCorreo, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addGap(44, 44, 44)
+                                        .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(CajaNombre)
+                                            .addComponent(CajaApellido)
+                                            .addComponent(CajaCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                                            .addComponent(FechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addGroup(NuevaCuentaLayout.createSequentialGroup()
+                                .addGap(119, 119, 119)
+                                .addComponent(BotonVolver)
+                                .addGap(61, 61, 61)
+                                .addComponent(BotonAgregar)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         NuevaCuentaLayout.setVerticalGroup(
@@ -251,7 +257,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addComponent(TextoErrorContra)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TextoOpcional)
                 .addGap(18, 18, 18)
                 .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -262,18 +268,18 @@ public class Ventana_Principal extends javax.swing.JFrame {
                     .addComponent(CajaApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextoApellido))
                 .addGap(37, 37, 37)
-                .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CajaFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextoFecha))
+                .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TextoFecha)
+                    .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CajaCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextoCorreo))
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonVolver)
                     .addComponent(BotonAgregar))
-                .addGap(20, 20, 20))
+                .addGap(14, 14, 14))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -467,10 +473,17 @@ public class Ventana_Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El usuario " + CajaTextoNewUsuario.getText() + " ya existe en el sistema", "Usuario Repetido", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        crearNuevoUsuario(CajaTextoNewUsuario.getText(), CajaTextoNewContra.getText());
-        JOptionPane.showMessageDialog(null, "Se ha creado correctamente el usuario" + CajaTextoNewUsuario.getText(), "Usuario Registrado", JOptionPane.INFORMATION_MESSAGE);
+        
+        //no se como hacer para que pueda meterme varios campos opcionales
+        if(CajaNombre.getText().isEmpty()){
+            
+        }
+        
+        FechaNacimiento.setDateFormatString("yyyy-MM-dd");
+        crearNuevoUsuario(CajaTextoNewUsuario.getText(), CajaTextoNewContra.getText(), CajaNombre.getText(), CajaApellido.getText(), FechaNacimiento.getDate(), CajaCorreo.getText());
+        JOptionPane.showMessageDialog(null, "Se ha creado correctamente el usuario " + CajaTextoNewUsuario.getText(), "Usuario Registrado", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_BotonAgregarActionPerformed
-
+   
     private void CajaConfContraseñaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CajaConfContraseñaKeyReleased
         if (!CajaTextoNewContra.getText().equals(CajaConfContraseña.getText())) {
             ponerCajasRojas(CajaTextoNewContra, CajaConfContraseña);
@@ -573,13 +586,13 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JTextField CajaApellido;
     private javax.swing.JTextField CajaConfContraseña;
     private javax.swing.JTextField CajaCorreo;
-    private javax.swing.JTextField CajaFecha;
     private javax.swing.JTextField CajaNombre;
     private javax.swing.JTextField CajaTextoNewContra;
     private javax.swing.JTextField CajaTextoNewUsuario;
     private javax.swing.JPasswordField Caja_contraseña;
     private javax.swing.JTextField Caja_usuario;
     private javax.swing.JCheckBox Check_mostrar_contraseña;
+    private com.toedter.calendar.JDateChooser FechaNacimiento;
     private javax.swing.JLabel Imagen_sesion;
     private javax.swing.JFrame Login;
     private javax.swing.JFrame NuevaCuenta;
