@@ -6,6 +6,7 @@ import static java.lang.System.exit;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
@@ -22,6 +23,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
         initComponents();
         TextoEnlace.setText("<html><a href=''>Hacer click para crear una nueva cuenta</a></html>");
         //TextoEnlace.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        TextoError.setVisible(false);
+        TextoErrorContra.setVisible(false);
 
         crearBD();
     }
@@ -56,6 +59,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         TextoCorreo = new javax.swing.JLabel();
         BotonVolver = new javax.swing.JButton();
         BotonAgregar = new javax.swing.JButton();
+        TextoErrorContra = new javax.swing.JLabel();
         Texto_login = new javax.swing.JLabel();
         Texto_Usuario = new javax.swing.JLabel();
         Texto_contraseña = new javax.swing.JLabel();
@@ -64,6 +68,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         Caja_contraseña = new javax.swing.JPasswordField();
         Boton_login = new javax.swing.JButton();
         TextoEnlace = new javax.swing.JLabel();
+        TextoError = new javax.swing.JLabel();
 
         Login.setTitle("Principal");
         Login.setResizable(false);
@@ -172,74 +177,81 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
+        TextoErrorContra.setText("*La contraseña no coincide");
+
         javax.swing.GroupLayout NuevaCuentaLayout = new javax.swing.GroupLayout(NuevaCuenta.getContentPane());
         NuevaCuenta.getContentPane().setLayout(NuevaCuentaLayout);
         NuevaCuentaLayout.setHorizontalGroup(
             NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
             .addGroup(NuevaCuentaLayout.createSequentialGroup()
                 .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(NuevaCuentaLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
                         .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(NuevaCuentaLayout.createSequentialGroup()
-                                .addGap(20, 20, 20)
+                                .addGap(116, 116, 116)
+                                .addComponent(BotonVolver)
+                                .addGap(61, 61, 61)
+                                .addComponent(BotonAgregar))
+                            .addGroup(NuevaCuentaLayout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(NuevaCuentaLayout.createSequentialGroup()
+                                        .addGap(43, 43, 43)
+                                        .addComponent(TextoOpcional))
+                                    .addGroup(NuevaCuentaLayout.createSequentialGroup()
+                                        .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(TextoApellido, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(TextoNombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(TextoFecha, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(TextoCorreo, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addGap(44, 44, 44)
+                                        .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(CajaNombre)
+                                            .addComponent(CajaApellido)
+                                            .addComponent(CajaFecha)
+                                            .addComponent(CajaCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(NuevaCuentaLayout.createSequentialGroup()
+                                .addGap(75, 75, 75)
                                 .addComponent(TextoNuevo))
                             .addGroup(NuevaCuentaLayout.createSequentialGroup()
+                                .addGap(50, 50, 50)
                                 .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(TextoContraseña)
                                     .addComponent(TextoUsuario)
                                     .addComponent(TextoConfContra))
                                 .addGap(44, 44, 44)
-                                .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(CajaTextoNewContra)
-                                    .addComponent(CajaTextoNewUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                                    .addComponent(CajaConfContraseña)))))
-                    .addGroup(NuevaCuentaLayout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(TextoOpcional))
-                    .addGroup(NuevaCuentaLayout.createSequentialGroup()
-                        .addGap(0, 53, Short.MAX_VALUE)
-                        .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TextoApellido, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TextoNombre, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TextoFecha, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TextoCorreo, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(44, 44, 44)
-                        .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(CajaNombre)
-                            .addComponent(CajaApellido)
-                            .addComponent(CajaFecha)
-                            .addComponent(CajaCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
-                        .addGap(14, 14, 14)))
-                .addContainerGap(81, Short.MAX_VALUE))
-            .addGroup(NuevaCuentaLayout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(BotonVolver)
-                .addGap(61, 61, 61)
-                .addComponent(BotonAgregar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TextoErrorContra)
+                                    .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(CajaTextoNewContra)
+                                        .addComponent(CajaTextoNewUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                                        .addComponent(CajaConfContraseña)))))
+                        .addGap(0, 71, Short.MAX_VALUE))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         NuevaCuentaLayout.setVerticalGroup(
             NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NuevaCuentaLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
                 .addComponent(TextoNuevo)
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextoUsuario)
                     .addComponent(CajaTextoNewUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CajaTextoNewContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextoContraseña))
+                .addGap(21, 21, 21)
+                .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TextoContraseña)
+                    .addComponent(CajaTextoNewContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CajaConfContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextoConfContra))
-                .addGap(27, 27, 27)
+                .addGap(15, 15, 15)
+                .addComponent(TextoErrorContra)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(TextoOpcional)
                 .addGap(18, 18, 18)
                 .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -257,7 +269,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CajaCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextoCorreo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonVolver)
                     .addComponent(BotonAgregar))
@@ -273,6 +285,12 @@ public class Ventana_Principal extends javax.swing.JFrame {
         Texto_Usuario.setText("Usuario");
 
         Texto_contraseña.setText("Password");
+
+        Caja_usuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                Caja_usuarioKeyReleased(evt);
+            }
+        });
 
         Check_mostrar_contraseña.setText("Mostrar");
         Check_mostrar_contraseña.addActionListener(new java.awt.event.ActionListener() {
@@ -296,6 +314,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
+        TextoError.setText("*Credenciales incorrectas");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -310,39 +330,44 @@ public class Ventana_Principal extends javax.swing.JFrame {
                         .addComponent(Boton_login)
                         .addGap(154, 154, 154))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(TextoEnlace, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TextoEnlace, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Texto_Usuario)
+                            .addComponent(Texto_contraseña))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TextoError)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Texto_Usuario)
-                                    .addComponent(Texto_contraseña))
-                                .addGap(28, 28, 28)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(Caja_usuario)
                                     .addComponent(Caja_contraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
+                                .addGap(26, 26, 26)
                                 .addComponent(Check_mostrar_contraseña)))
-                        .addGap(31, 31, 31))))
+                        .addGap(23, 23, 23))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(Texto_login)
-                .addGap(50, 50, 50)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Texto_Usuario)
-                    .addComponent(Caja_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
+                    .addComponent(Caja_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Texto_Usuario))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Caja_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Texto_contraseña)
-                    .addComponent(Check_mostrar_contraseña)
-                    .addComponent(Caja_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                    .addComponent(Check_mostrar_contraseña))
+                .addGap(18, 18, 18)
+                .addComponent(TextoError)
+                .addGap(21, 21, 21)
                 .addComponent(Boton_login)
                 .addGap(18, 18, 18)
                 .addComponent(TextoEnlace)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -350,51 +375,47 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Boton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_loginActionPerformed
-        
+
         String usuario = Caja_usuario.getText();
         String contraseña = "";
         //al devolver un array de chars, lo meto en un string para guardarlo
         for (int i = 0; i < Caja_contraseña.getPassword().length; i++) {
             contraseña += Caja_contraseña.getPassword()[i];
         }
-        
-        if(Caja_usuario.getText().isEmpty() || contraseña.isEmpty()){
+
+        //compruebo campos vacios antes de ver si existe en la BD
+        if (Caja_usuario.getText().isEmpty() || contraseña.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Alguno de los campos estan vacios", "Campos Vacios", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         existeUsuario(usuario, contraseña);
 
     }//GEN-LAST:event_Boton_loginActionPerformed
 
     public void existeUsuario(String usuario, String contraseña) {
-        //Border original = BorderFactory.createLineBorder(Color.gray);
         ArrayList<Usuario> usuarios = usuariosHarcodeados();
-        boolean existe = false;
         for (Usuario it : usuarios) {
             if (usuario.equalsIgnoreCase(it.getNombre()) && contraseña.equalsIgnoreCase(it.getContrasenia())) {
                 //irse a la otra ventana
-//                Caja_contraseña.setBorder(original);
-//                Caja_usuario.setBorder(original);
                 ponerCajasOriginal(Caja_contraseña, Caja_usuario);
+                reset();
                 Login.setSize(300, 300);
                 Texto_Usuario_Logueado.setText("El usuario " + usuario + " esta logueado");
                 Login.setLocationRelativeTo(this);
                 Login.setVisible(true);
+                esconderMostrarTextos(TextoError, false);  
                 return;
             }
         }
 
-        if (!existe) {
-            JOptionPane.showMessageDialog(null, "El usuario no existe" + "\n" + "Por favor vuelva a introducir las credenciales", "Usuario no encontrado", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null, "El usuario no existe" + "\n" + "Por favor vuelva a introducir las credenciales", "Usuario no encontrado", JOptionPane.WARNING_MESSAGE);
 
-            //intensidad y duracion
-            vibrarVentana(this, 9, 50);
-        }
+        //intensidad y duracion
+        vibrarVentana(this, 9, 50);
         reset();
-//        Caja_contraseña.setBorder(rojo);
-//        Caja_usuario.setBorder(rojo);
         ponerCajasRojas(Caja_contraseña, Caja_usuario);
+        esconderMostrarTextos(TextoError, true);
     }
 
     public void reset() {
@@ -420,8 +441,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private void TextoEnlaceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextoEnlaceMouseClicked
         activarVentanaNuevaCuenta();
     }//GEN-LAST:event_TextoEnlaceMouseClicked
-    
-    private void activarVentanaNuevaCuenta(){
+
+    private void activarVentanaNuevaCuenta() {
         NuevaCuenta.setSize(439, 589);
         NuevaCuenta.setLocationRelativeTo(this);
         NuevaCuenta.setResizable(false);
@@ -437,6 +458,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonVolverActionPerformed
 
     private void BotonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarActionPerformed
+         //compruebo campos vacios antes de ver si existe en la BD
+        if (CajaTextoNewUsuario.getText().isEmpty() || CajaTextoNewContra.getText().isEmpty() || CajaConfContraseña.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Alguno de los campos estan vacios", "Campos Vacios", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         if (controlExisteUsuario(CajaTextoNewUsuario.getText(), CajaTextoNewContra.getText())) {
             JOptionPane.showMessageDialog(null, "El usuario " + CajaTextoNewUsuario.getText() + " ya existe en el sistema", "Usuario Repetido", JOptionPane.WARNING_MESSAGE);
             return;
@@ -448,8 +474,10 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private void CajaConfContraseñaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CajaConfContraseñaKeyReleased
         if (!CajaTextoNewContra.getText().equals(CajaConfContraseña.getText())) {
             ponerCajasRojas(CajaTextoNewContra, CajaConfContraseña);
+            esconderMostrarTextos(TextoErrorContra, true);
         } else {
             ponerCajasOriginal(CajaTextoNewContra, CajaConfContraseña);
+            esconderMostrarTextos(TextoErrorContra, false);
         }
     }//GEN-LAST:event_CajaConfContraseñaKeyReleased
 
@@ -458,6 +486,21 @@ public class Ventana_Principal extends javax.swing.JFrame {
         Login.dispose();
     }//GEN-LAST:event_BotonNuevoActionPerformed
 
+    private void Caja_usuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Caja_usuarioKeyReleased
+//        if(Caja_usuario.getText().equals("")){
+//            ponerCajasOriginal(Caja_usuario, Caja_contraseña);
+//        }
+    }//GEN-LAST:event_Caja_usuarioKeyReleased
+
+    private void esconderMostrarTextos(JLabel j, boolean visible) {
+        if (visible) {
+            j.setVisible(true);
+            return;
+        }
+        j.setVisible(false);
+
+    }
+
     private void ponerCajasRojas(JTextField j, JTextField f) {
         Border rojo = BorderFactory.createLineBorder(Color.RED, 2);
         j.setBorder(rojo);
@@ -465,9 +508,10 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }
 
     private void ponerCajasOriginal(JTextField j, JTextField f) {
-        Border original = BorderFactory.createLineBorder(Color.gray);
-        j.setBorder(original);
-        f.setBorder(original);
+        Border defecto = CajaApellido.getBorder();
+        //Border original = BorderFactory.createLineBorder(Color.gray);
+        j.setBorder(defecto);
+        f.setBorder(defecto);
     }
 
     public void vibrarVentana(JFrame frame, int intensidad, int duracion) {
@@ -544,6 +588,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JLabel TextoContraseña;
     private javax.swing.JLabel TextoCorreo;
     private javax.swing.JLabel TextoEnlace;
+    private javax.swing.JLabel TextoError;
+    private javax.swing.JLabel TextoErrorContra;
     private javax.swing.JLabel TextoFecha;
     private javax.swing.JLabel TextoNombre;
     private javax.swing.JLabel TextoNuevo;

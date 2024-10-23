@@ -100,87 +100,95 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
+                                  <Component id="BotonVolver" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                                  <Component id="BotonAgregar" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                          <Component id="TextoOpcional" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="TextoApellido" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="TextoNombre" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="TextoFecha" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="TextoCorreo" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="CajaNombre" max="32767" attributes="0"/>
+                                              <Component id="CajaApellido" max="32767" attributes="0"/>
+                                              <Component id="CajaFecha" max="32767" attributes="0"/>
+                                              <Component id="CajaCorreo" min="-2" pref="132" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                                   <Component id="TextoNuevo" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="TextoContraseña" min="-2" max="-2" attributes="0"/>
                                       <Component id="TextoUsuario" min="-2" max="-2" attributes="0"/>
                                       <Component id="TextoConfContra" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="CajaTextoNewContra" max="32767" attributes="0"/>
-                                      <Component id="CajaTextoNewUsuario" pref="133" max="32767" attributes="0"/>
-                                      <Component id="CajaConfContraseña" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="TextoErrorContra" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="CajaTextoNewContra" max="32767" attributes="0"/>
+                                          <Component id="CajaTextoNewUsuario" pref="133" max="32767" attributes="0"/>
+                                          <Component id="CajaConfContraseña" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
+                          <EmptySpace min="0" pref="71" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-                          <Component id="TextoOpcional" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="0" pref="53" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="TextoApellido" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="TextoNombre" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="TextoFecha" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="TextoCorreo" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="CajaNombre" max="32767" attributes="0"/>
-                              <Component id="CajaApellido" max="32767" attributes="0"/>
-                              <Component id="CajaFecha" max="32767" attributes="0"/>
-                              <Component id="CajaCorreo" pref="132" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jSeparator1" alignment="1" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="81" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-                  <Component id="BotonVolver" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                  <Component id="BotonAgregar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="TextoNuevo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="TextoUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="CajaTextoNewUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="CajaTextoNewContra" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TextoContraseña" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="TextoContraseña" min="-2" max="-2" attributes="0"/>
+                      <Component id="CajaTextoNewContra" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="CajaConfContraseña" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="TextoConfContra" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <Component id="TextoErrorContra" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="TextoOpcional" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -202,7 +210,7 @@
                       <Component id="CajaCorreo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="TextoCorreo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="BotonVolver" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BotonAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -296,6 +304,11 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonAgregarActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JLabel" name="TextoErrorContra">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="*La contrase&#xf1;a no coincide"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </NonVisualComponents>
@@ -335,23 +348,27 @@
                       <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
+                      <Component id="TextoEnlace" min="-2" pref="267" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="TextoEnlace" alignment="1" min="-2" pref="267" max="-2" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="Texto_Usuario" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Texto_contraseña" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="Texto_Usuario" min="-2" max="-2" attributes="0"/>
+                          <Component id="Texto_contraseña" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="TextoError" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="Caja_usuario" max="32767" attributes="0"/>
                                   <Component id="Caja_contraseña" pref="136" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               <Component id="Check_mostrar_contraseña" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -362,22 +379,24 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               <Component id="Texto_login" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Texto_Usuario" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Caja_usuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Texto_Usuario" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="Caja_contraseña" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Texto_contraseña" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Check_mostrar_contraseña" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Caja_contraseña" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="TextoError" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Component id="Boton_login" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="TextoEnlace" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="38" max="32767" attributes="0"/>
+              <EmptySpace pref="14" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -399,6 +418,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Caja_usuario">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Caja_usuarioKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="Check_mostrar_contrase&#xf1;a">
       <Properties>
@@ -428,6 +450,11 @@
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TextoEnlaceMouseClicked"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="TextoError">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="*Credenciales incorrectas"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
