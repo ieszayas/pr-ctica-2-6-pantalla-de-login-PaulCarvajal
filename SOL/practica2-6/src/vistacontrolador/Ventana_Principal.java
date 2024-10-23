@@ -350,7 +350,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Boton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_loginActionPerformed
-        
+
         String usuario = Caja_usuario.getText();
         String contraseña = "";
         //al devolver un array de chars, lo meto en un string para guardarlo
@@ -387,7 +387,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         if (!existe) {
             JOptionPane.showMessageDialog(null, "El usuario no existe" + "\n" + "Por favor vuelva a introducir las credenciales", "Usuario no encontrado", JOptionPane.WARNING_MESSAGE);
-
             //intensidad y duracion
             vibrarVentana(this, 9, 50);
         }
