@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class GestorBBDD {
 
@@ -147,5 +148,65 @@ public class GestorBBDD {
             }
         }
         return usuarios;
+    }
+    
+    public static void crearNuevoUsuario(String usuario, String contraseña){
+        Connection con  = getConexion();
+        PreparedStatement pstm = null;
+        
+        try {
+            pstm = con.prepareStatement("INSERT INTO usuarios (usuario, contraseña) "
+                    + "VALUES (?, ?);");
+            pstm.setString(1, usuario);
+            pstm.setString(2, contraseña);
+            
+            pstm.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println("No se ha podido crear el usuario " + usuario);
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if(pstm != null){
+                    pstm.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("No se han podido cerrar los recursos");
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    
+    public static boolean controlExisteUsuario(String usuario, String contraseña){
+        Connection con =  getConexion();
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        
+        try {
+            pstm = con.prepareStatement("SELECT * FROM usuarios WHERE usuario = ? AND contraseña = ?");
+            pstm.setString(1, usuario);
+            pstm.setString(2, contraseña);
+            rs = pstm.executeQuery();
+            
+            while (rs.next()) {                
+                return true;
+            }
+            
+            
+        } catch (SQLException e) {
+            System.out.println("Algo ha ocurrido al revisar si existe el usuario");
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if(pstm != null){
+                    pstm.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("No se han podido cerrar los recursos");
+                System.out.println(e.getMessage());
+            }
+        }
+        
+        return false;
     }
 }
