@@ -179,15 +179,20 @@ public class GestorBBDD {
             if(apellido != null){
                 pstm.setString(4, apellido);
             }else{
-                pstm.setNull(4, java.sql.Types.VARCHAR);
+               pstm.setNull(4, java.sql.Types.VARCHAR);
             }
+            
+            //no se como poner null de otra forma, asi solamente se pone un espacio en blanco
+            //pstm.setString(4, null);
+            
             
             //Comprobacion fecha          
             if(fecha != null){
-                pstm.setString(5, nombre);
+                pstm.setDate(5, new java.sql.Date(fecha.getTime())); //getTime te convierte el valor a long que es lo que lee la conversion en la BBDD
             }else{
                 pstm.setNull(5, java.sql.Types.DATE);
             }
+            
             
             //Comprobacion correo
             if(correo != null){
@@ -215,15 +220,14 @@ public class GestorBBDD {
     }
     
     
-    public static boolean controlExisteUsuario(String usuario, String contraseña){
+    public static boolean controlExisteUsuario(String usuario){
         Connection con =  getConexion();
         PreparedStatement pstm = null;
         ResultSet rs = null;
         
         try {
-            pstm = con.prepareStatement("SELECT * FROM usuarios WHERE usuario = ? AND contraseña = ?");
+            pstm = con.prepareStatement("SELECT * FROM usuarios WHERE usuario = ?");
             pstm.setString(1, usuario);
-            pstm.setString(2, contraseña);
             rs = pstm.executeQuery();
             
             while (rs.next()) {                

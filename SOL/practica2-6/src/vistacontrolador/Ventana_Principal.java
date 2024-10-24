@@ -8,6 +8,7 @@ import static java.lang.System.exit;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -28,8 +29,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
         //TextoEnlace.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         TextoError.setVisible(false);
         TextoErrorContra.setVisible(false);
-        
-
+        ImagenCheck.setVisible(false);
+        esconderMostrarTextos(TextoConfirmacion, false);
         crearBD();
     }
 
@@ -63,7 +64,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
         BotonVolver = new javax.swing.JButton();
         BotonAgregar = new javax.swing.JButton();
         TextoErrorContra = new javax.swing.JLabel();
-        FechaNacimiento = new com.toedter.calendar.JDateChooser();
+        CajaFechaNacimiento = new com.toedter.calendar.JDateChooser();
+        TextoConfirmacion = new javax.swing.JLabel();
+        ImagenCheck = new javax.swing.JLabel();
         Texto_login = new javax.swing.JLabel();
         Texto_Usuario = new javax.swing.JLabel();
         Texto_contraseña = new javax.swing.JLabel();
@@ -89,7 +92,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
-        Imagen_sesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistacontrolador/icono.png"))); // NOI18N
+        Imagen_sesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono.png"))); // NOI18N
 
         BotonNuevo.setText("Nuevo usuario");
         BotonNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -153,9 +156,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         TextoOpcional.setText("Agregar datos opcionales del nuevo usuario:");
 
-        CajaApellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CajaApellidoActionPerformed(evt);
+        CajaCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                CajaCorreoKeyReleased(evt);
             }
         });
 
@@ -183,7 +186,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         TextoErrorContra.setText("*La contraseña no coincide");
 
-        FechaNacimiento.setDateFormatString("yyyy-MM-dd");
+        CajaFechaNacimiento.setDateFormatString("yyyy-MM-dd");
+
+        TextoConfirmacion.setText("*Escribe una direccion de correo valida");
+
+        ImagenCheck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Check_chiquito.png"))); // NOI18N
 
         javax.swing.GroupLayout NuevaCuentaLayout = new javax.swing.GroupLayout(NuevaCuenta.getContentPane());
         NuevaCuenta.getContentPane().setLayout(NuevaCuentaLayout);
@@ -227,13 +234,18 @@ public class Ventana_Principal extends javax.swing.JFrame {
                                             .addComponent(CajaNombre)
                                             .addComponent(CajaApellido)
                                             .addComponent(CajaCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                                            .addComponent(FechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                            .addComponent(CajaFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(ImagenCheck))))
                             .addGroup(NuevaCuentaLayout.createSequentialGroup()
                                 .addGap(119, 119, 119)
                                 .addComponent(BotonVolver)
                                 .addGap(61, 61, 61)
-                                .addComponent(BotonAgregar)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)))
+                                .addComponent(BotonAgregar))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NuevaCuentaLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(TextoConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         NuevaCuentaLayout.setVerticalGroup(
@@ -270,12 +282,15 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TextoFecha)
-                    .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CajaFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CajaCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextoCorreo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                    .addComponent(TextoCorreo)
+                    .addComponent(ImagenCheck))
+                .addGap(18, 18, 18)
+                .addComponent(TextoConfirmacion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(NuevaCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonVolver)
                     .addComponent(BotonAgregar))
@@ -302,6 +317,12 @@ public class Ventana_Principal extends javax.swing.JFrame {
         Check_mostrar_contraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Check_mostrar_contraseñaActionPerformed(evt);
+            }
+        });
+
+        Caja_contraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                Caja_contraseñaKeyReleased(evt);
             }
         });
 
@@ -402,7 +423,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     public void existeUsuario(String usuario, String contraseña) {
         ArrayList<Usuario> usuarios = usuariosHarcodeados();
         for (Usuario it : usuarios) {
-            if (usuario.equalsIgnoreCase(it.getNombre()) && contraseña.equalsIgnoreCase(it.getContrasenia())) {
+            if (usuario.equalsIgnoreCase(it.getUsuario())) {
                 //irse a la otra ventana
                 ponerCajasOriginal(Caja_contraseña, Caja_usuario);
                 reset();
@@ -410,7 +431,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 Texto_Usuario_Logueado.setText("El usuario " + usuario + " esta logueado");
                 Login.setLocationRelativeTo(this);
                 Login.setVisible(true);
-                esconderMostrarTextos(TextoError, false);  
+                esconderMostrarTextos(TextoError, false);
                 return;
             }
         }
@@ -429,7 +450,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
         Caja_contraseña.setText("");
 
     }
-
 
     private void Check_mostrar_contraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Check_mostrar_contraseñaActionPerformed
         if (Check_mostrar_contraseña.isSelected()) {
@@ -455,35 +475,39 @@ public class Ventana_Principal extends javax.swing.JFrame {
         NuevaCuenta.setVisible(true);
 
     }
-    private void CajaApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CajaApellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CajaApellidoActionPerformed
-
     private void BotonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVolverActionPerformed
-        NuevaCuenta.dispose();
+        resetearVentana();
+        textoImagenBordePorDefecto();
+        NuevaCuenta.dispose();   
     }//GEN-LAST:event_BotonVolverActionPerformed
-
+    
+    private void resetearVentana(){
+        CajaTextoNewUsuario.setText("");
+        CajaTextoNewContra.setText("");
+        CajaConfContraseña.setText("");
+        CajaNombre.setText("");
+        CajaApellido.setText("");
+        CajaCorreo.setText("");
+        CajaFechaNacimiento.setDate(null);
+    }
+    
+    
     private void BotonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarActionPerformed
-         //compruebo campos vacios antes de ver si existe en la BD
-        if (CajaTextoNewUsuario.getText().isEmpty() || CajaTextoNewContra.getText().isEmpty() || CajaConfContraseña.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Alguno de los campos estan vacios", "Campos Vacios", JOptionPane.ERROR_MESSAGE);
+        //compruebo campos vacios antes de ver si existe en la BD
+        if (CajaTextoNewUsuario.getText().isEmpty() || CajaTextoNewContra.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Alguno de los campos estan vacios", "Campos Vacios", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        if (controlExisteUsuario(CajaTextoNewUsuario.getText(), CajaTextoNewContra.getText())) {
+        if (controlExisteUsuario(CajaTextoNewUsuario.getText())) {
             JOptionPane.showMessageDialog(null, "El usuario " + CajaTextoNewUsuario.getText() + " ya existe en el sistema", "Usuario Repetido", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
-        //no se como hacer para que pueda meterme varios campos opcionales
-        if(CajaNombre.getText().isEmpty()){
-            
-        }
-        
-        FechaNacimiento.setDateFormatString("yyyy-MM-dd");
-        crearNuevoUsuario(CajaTextoNewUsuario.getText(), CajaTextoNewContra.getText(), CajaNombre.getText(), CajaApellido.getText(), FechaNacimiento.getDate(), CajaCorreo.getText());
+
+        //FechaNacimiento.setDateFormatString("yyyy-MM-dd");
+        crearNuevoUsuario(CajaTextoNewUsuario.getText(), CajaTextoNewContra.getText(), CajaNombre.getText(), CajaApellido.getText(), CajaFechaNacimiento.getDate(), CajaCorreo.getText());
         JOptionPane.showMessageDialog(null, "Se ha creado correctamente el usuario " + CajaTextoNewUsuario.getText(), "Usuario Registrado", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_BotonAgregarActionPerformed
-   
+
     private void CajaConfContraseñaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CajaConfContraseñaKeyReleased
         if (!CajaTextoNewContra.getText().equals(CajaConfContraseña.getText())) {
             ponerCajasRojas(CajaTextoNewContra, CajaConfContraseña);
@@ -504,6 +528,54 @@ public class Ventana_Principal extends javax.swing.JFrame {
         TextoError.setVisible(false);
     }//GEN-LAST:event_Caja_usuarioKeyReleased
 
+
+    private void CajaCorreoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CajaCorreoKeyReleased
+        //Para cambiar de iconos cuando se equivoque o este bien, no usar rutas absolutas
+        ImageIcon cruz = new ImageIcon("./src/imagenes/cruz.png");
+        ImageIcon check = new ImageIcon("./src/imagenes/Check_chiquito.png");
+
+        Border check_verde = BorderFactory.createLineBorder(Color.green, 2);
+        Border cruz_rojo = BorderFactory.createLineBorder(Color.RED, 2);
+        String regex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{3,4}$";
+
+        //Cuando esta vacio no muestro nada y lo dejo sin imagen ni mensaje de confirmacion
+        if (CajaCorreo.getText().equals("")) {
+            textoImagenBordePorDefecto();
+            return;
+        }
+
+        //si entra en el if es que el correo no es valido
+        if (!CajaCorreo.getText().matches(regex)) {
+            CajaCorreo.setBorder(cruz_rojo);
+            Imagen_visible();
+            ImagenCheck.setIcon(cruz);
+            esconderMostrarTextos(TextoConfirmacion, true);
+            TextoConfirmacion.setText("* Escribe una direccion de correo valida");
+
+        } else {
+            CajaCorreo.setBorder(check_verde);
+            Imagen_visible();
+            ImagenCheck.setIcon(check);
+            TextoConfirmacion.setText("Correo verificado correctamente");
+
+        }
+    }//GEN-LAST:event_CajaCorreoKeyReleased
+
+    private void Caja_contraseñaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Caja_contraseñaKeyReleased
+        ponerCajasOriginal(Caja_usuario, Caja_contraseña);
+        TextoError.setVisible(false);
+    }//GEN-LAST:event_Caja_contraseñaKeyReleased
+    private void textoImagenBordePorDefecto() {
+        Border defecto = CajaApellido.getBorder();
+        CajaCorreo.setBorder(defecto);
+        TextoConfirmacion.setVisible(false);
+        ImagenCheck.setVisible(false);
+    }
+
+    private void Imagen_visible() {
+        ImagenCheck.setVisible(true);
+    }
+
     private void esconderMostrarTextos(JLabel j, boolean visible) {
         if (visible) {
             j.setVisible(true);
@@ -512,7 +584,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         j.setVisible(false);
 
     }
-    
+
     //este metodo recibe como entrada los Jtext fiel que son las cajas que van a cambiar el color del borde
     private void ponerCajasRojas(JTextField j, JTextField f) {
         Border rojo = BorderFactory.createLineBorder(Color.RED, 2);
@@ -586,18 +658,20 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JTextField CajaApellido;
     private javax.swing.JTextField CajaConfContraseña;
     private javax.swing.JTextField CajaCorreo;
+    private com.toedter.calendar.JDateChooser CajaFechaNacimiento;
     private javax.swing.JTextField CajaNombre;
     private javax.swing.JTextField CajaTextoNewContra;
     private javax.swing.JTextField CajaTextoNewUsuario;
     private javax.swing.JPasswordField Caja_contraseña;
     private javax.swing.JTextField Caja_usuario;
     private javax.swing.JCheckBox Check_mostrar_contraseña;
-    private com.toedter.calendar.JDateChooser FechaNacimiento;
+    private javax.swing.JLabel ImagenCheck;
     private javax.swing.JLabel Imagen_sesion;
     private javax.swing.JFrame Login;
     private javax.swing.JFrame NuevaCuenta;
     private javax.swing.JLabel TextoApellido;
     private javax.swing.JLabel TextoConfContra;
+    private javax.swing.JLabel TextoConfirmacion;
     private javax.swing.JLabel TextoContraseña;
     private javax.swing.JLabel TextoCorreo;
     private javax.swing.JLabel TextoEnlace;

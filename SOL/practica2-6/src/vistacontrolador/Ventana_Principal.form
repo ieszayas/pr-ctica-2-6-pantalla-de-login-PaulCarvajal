@@ -81,7 +81,7 @@
         <Component class="javax.swing.JLabel" name="Imagen_sesion">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/vistacontrolador/icono.png"/>
+              <Image iconType="3" name="/imagenes/icono.png"/>
             </Property>
           </Properties>
         </Component>
@@ -145,8 +145,10 @@
                                               <Component id="CajaNombre" max="32767" attributes="0"/>
                                               <Component id="CajaApellido" max="32767" attributes="0"/>
                                               <Component id="CajaCorreo" pref="132" max="32767" attributes="0"/>
-                                              <Component id="FechaNacimiento" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="CajaFechaNacimiento" alignment="0" max="32767" attributes="0"/>
                                           </Group>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="ImagenCheck" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -156,8 +158,12 @@
                                   <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                                   <Component id="BotonAgregar" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="TextoConfirmacion" min="-2" pref="252" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace pref="82" max="32767" attributes="0"/>
+                          <EmptySpace pref="60" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -203,14 +209,17 @@
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="TextoFecha" min="-2" max="-2" attributes="0"/>
-                      <Component id="FechaNacimiento" min="-2" max="-2" attributes="0"/>
+                      <Component id="CajaFechaNacimiento" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="CajaCorreo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="TextoCorreo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ImagenCheck" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="59" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="TextoConfirmacion" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="22" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="BotonVolver" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BotonAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -260,11 +269,11 @@
         <Component class="javax.swing.JTextField" name="CajaNombre">
         </Component>
         <Component class="javax.swing.JTextField" name="CajaApellido">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CajaApellidoActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="CajaCorreo">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CajaCorreoKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="TextoNombre">
           <Properties>
@@ -307,9 +316,21 @@
             <Property name="text" type="java.lang.String" value="*La contrase&#xf1;a no coincide"/>
           </Properties>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="FechaNacimiento">
+        <Component class="com.toedter.calendar.JDateChooser" name="CajaFechaNacimiento">
           <Properties>
             <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="TextoConfirmacion">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="*Escribe una direccion de correo valida"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="ImagenCheck">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagenes/Check_chiquito.png"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>
@@ -434,6 +455,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="Caja_contrase&#xf1;a">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Caja_contrase&#xf1;aKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Boton_login">
       <Properties>
