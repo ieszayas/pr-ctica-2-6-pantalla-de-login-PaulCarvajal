@@ -1,6 +1,7 @@
 package vistacontrolador;
 
 import java.awt.Color;
+import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -81,7 +82,11 @@ public class NuevaCuenta extends javax.swing.JFrame {
 
         CajaFechaNacimiento.setDateFormatString("yyyy-MM-dd");
 
+        CajaNombre.setName("Nombre"); // NOI18N
+
         TextoConfirmacion.setText("*Escribe una direccion de correo valida");
+
+        CajaApellido.setName("Apellido"); // NOI18N
 
         ImagenCheck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Check_chiquito.png"))); // NOI18N
 
@@ -286,7 +291,7 @@ public class NuevaCuenta extends javax.swing.JFrame {
 
     private void BotonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarActionPerformed
         //controles antes de crear el nuevo usuario
-        if (camposVacios() || contraseñaCoincide() || correoValido() || existeUsuario()) {
+        if (camposVacios() || existeUsuario() || contraseñaCoincide() || controlNums(CajaNombre) || controlNums(CajaApellido) || controlFecha(CajaFechaNacimiento.getDate()) || correoValido()) {
             return;
         }
 
@@ -295,6 +300,7 @@ public class NuevaCuenta extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Se ha creado correctamente el usuario " + CajaTextoNewUsuario.getText(), "Usuario Registrado", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_BotonAgregarActionPerformed
 
+    //CONTROLES
     private boolean camposVacios() {
         //compruebo campos vacios antes de ver si existe en la BD
         if (CajaTextoNewUsuario.getText().isEmpty() || CajaTextoNewContra.getText().isEmpty()) {
@@ -303,7 +309,6 @@ public class NuevaCuenta extends javax.swing.JFrame {
         }
         return false;
     }
-
     private boolean existeUsuario() {
         if (controlExisteUsuario(CajaTextoNewUsuario.getText())) {
             JOptionPane.showMessageDialog(this, "El usuario " + CajaTextoNewUsuario.getText() + " ya existe en el sistema", "Usuario Repetido", JOptionPane.ERROR_MESSAGE);
@@ -311,7 +316,6 @@ public class NuevaCuenta extends javax.swing.JFrame {
         }
         return false;
     }
-
     private boolean contraseñaCoincide() {
         if (!CajaTextoNewContra.getText().equals(CajaConfContraseña.getText())) {
             JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden", "Contraseñas no iguales", JOptionPane.ERROR_MESSAGE);
@@ -319,7 +323,28 @@ public class NuevaCuenta extends javax.swing.JFrame {
         }
         return false;
     }
-
+    private boolean controlNums(JTextField j) {
+        //si esta vacio al ser un campo opcional, no hacer el control de los numericos
+        if (!j.getText().isEmpty()) {
+            //ninguno de los campos debe tener un simbolo numerico
+            if (!j.getText().matches("^[a-zA-Z]+$")) {
+                JOptionPane.showMessageDialog(this, "El campo " + j.getName() + " no puede tener simbolos numericos", "Formato incorrecto", JOptionPane.ERROR_MESSAGE);
+                return true;
+            }
+        }
+        return false;
+    }
+    private boolean controlFecha(Date d) {
+        Date fechaLimite = new Date();
+        if (d != null) {
+            //compara la fecha introducida con la fecha actual
+            if (d.getTime() > fechaLimite.getTime()) {
+                JOptionPane.showMessageDialog(this, "La fecha no puede ser superior a la actual", "Fecha Erronea", JOptionPane.ERROR_MESSAGE);
+                return true;
+            }
+        }
+        return false;
+    }
     private boolean correoValido() {
         //Border cruz_rojo = BorderFactory.createLineBorder(Color.RED, 2);
         Border correo = CajaCorreo.getBorder();
@@ -336,10 +361,6 @@ public class NuevaCuenta extends javax.swing.JFrame {
             }
         }
         return false;
-    }
-    
-    private void controlNums(){
-        
     }
 
     private void CajaCorreoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CajaCorreoKeyReleased

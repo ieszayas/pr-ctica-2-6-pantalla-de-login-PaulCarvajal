@@ -215,6 +215,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="CajaNombre">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="Nombre" noResource="true"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="TextoConfirmacion">
       <Properties>
@@ -222,6 +225,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="CajaApellido">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="Apellido" noResource="true"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="ImagenCheck">
       <Properties>
