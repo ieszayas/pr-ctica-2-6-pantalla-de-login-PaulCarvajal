@@ -169,14 +169,14 @@ public class GestorBBDD {
             pstm.setString(2, contraseña);
             
             //Comprobacion nombre
-            if(nombre != null){
+            if(nombre != null && !nombre.trim().isEmpty()){
                 pstm.setString(3, nombre);
             }else{
                 pstm.setNull(3, java.sql.Types.VARCHAR);
             }
             
             //Comprobacion apellido
-            if(apellido != null){
+            if(apellido != null && !apellido.trim().isEmpty()){
                 pstm.setString(4, apellido);
             }else{
                pstm.setNull(4, java.sql.Types.VARCHAR);
@@ -195,7 +195,7 @@ public class GestorBBDD {
             
             
             //Comprobacion correo
-            if(correo != null){
+            if(correo != null && !correo.trim().isEmpty()){
                 pstm.setString(6, correo);
             }else{
                 pstm.setNull(6, java.sql.Types.VARCHAR);
