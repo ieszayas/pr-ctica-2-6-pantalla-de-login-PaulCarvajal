@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 public class GestorBBDD {
@@ -88,16 +89,19 @@ public class GestorBBDD {
 
         try {
             pstm = con.prepareStatement("CREATE TABLE IF NOT EXISTS Usuarios("
-                    + "usuario VARCHAR (20), "
+                    + "usuario VARCHAR (20) PRIMARY KEY, "
                     + "contraseña VARCHAR (30),"
-                    + "PRIMARY KEY(usuario, contraseña));");
+                    + "nombre VARCHAR (20), "
+                    + "apellido VARCHAR (30), "
+                    + "fecha_nacimiento DATE, "
+                    + "correo VARCHAR (20));");
             pstm.executeUpdate();
             
-            pstm = con.prepareStatement("INSERT IGNORE INTO Usuarios (usuario, contraseña) "
-                    + "VALUES ('Pol', '1234'), "
-                    + "('Kevin', '1234'), "
-                    + "('Adriana', '1234'), "
-                    + "('Jorge', '1234');");
+            pstm = con.prepareStatement("INSERT IGNORE INTO Usuarios (usuario, contraseña, nombre, apellido, fecha_nacimiento, correo) "
+                    + "VALUES ('Pol', '1234', null, null, null, null), "
+                    + "('Kevin', '1234', null, null, null, null), "
+                    + "('Adriana', '1234', null, null, null, null), "
+                    + "('Jorge', '1234', null, null, null, null);");
             pstm.executeUpdate();
         } catch (SQLException e) {
             System.out.println("No se ha podido crear la Tabla usuarios");
@@ -127,7 +131,11 @@ public class GestorBBDD {
             while (rs.next()) {
                 String nick = rs.getString("usuario");
                 String contraseña = rs.getString("contraseña");
-                Usuario u1 = new Usuario(nick, contraseña);
+                String nombre = rs.getString("nombre");
+                String apellido = rs.getString("apellido");
+                Date fecha = rs.getDate("fecha_nacimiento");
+                String correo = rs.getString("correo");
+                Usuario u1 = new Usuario(nick, contraseña, nombre, apellido, fecha, correo);
                 usuarios.add(u1);
             }
 
@@ -150,21 +158,55 @@ public class GestorBBDD {
         return usuarios;
     }
     
-    public static void crearNuevoUsuario(String usuario, String contraseña){
+    public static void crearNuevoUsuario(String usuario, String contraseña, String nombre, String apellido, Date fecha, String correo ){
         Connection con  = getConexion();
         PreparedStatement pstm = null;
         
         try {
-            pstm = con.prepareStatement("INSERT INTO usuarios (usuario, contraseña) "
-                    + "VALUES (?, ?);");
+            pstm = con.prepareStatement("INSERT INTO usuarios (usuario, contraseña, nombre, apellido, fecha_nacimiento, correo) "
+                    + "VALUES (?, ?, ?, ?, ?, ?);");
             pstm.setString(1, usuario);
             pstm.setString(2, contraseña);
+            
+            //Comprobacion nombre
+            if(nombre != null && !nombre.trim().isEmpty()){
+                pstm.setString(3, nombre);
+            }else{
+                pstm.setNull(3, java.sql.Types.VARCHAR);
+            }
+            
+            //Comprobacion apellido
+            if(apellido != null && !apellido.trim().isEmpty()){
+                pstm.setString(4, apellido);
+            }else{
+               pstm.setNull(4, java.sql.Types.VARCHAR);
+            }
+            
+            //no se como poner null de otra forma, asi solamente se pone un espacio en blanco
+            //pstm.setString(4, null);
+            
+            
+            //Comprobacion fecha          
+            if(fecha != null){
+                pstm.setDate(5, new java.sql.Date(fecha.getTime())); //getTime te convierte el valor a long que es lo que lee la conversion en la BBDD
+            }else{
+                pstm.setNull(5, java.sql.Types.DATE);
+            }
+            
+            
+            //Comprobacion correo
+            if(correo != null && !correo.trim().isEmpty()){
+                pstm.setString(6, correo);
+            }else{
+                pstm.setNull(6, java.sql.Types.VARCHAR);
+            }
             
             pstm.executeUpdate();
             
         } catch (SQLException e) {
             System.out.println("No se ha podido crear el usuario " + usuario);
             System.out.println(e.getMessage());
+            e.printStackTrace();
         } finally {
             try {
                 if(pstm != null){
@@ -177,15 +219,15 @@ public class GestorBBDD {
         }
     }
     
-    public static boolean controlExisteUsuario(String usuario, String contraseña){
+    
+    public static boolean controlExisteUsuario(String usuario){
         Connection con =  getConexion();
         PreparedStatement pstm = null;
         ResultSet rs = null;
         
         try {
-            pstm = con.prepareStatement("SELECT * FROM usuarios WHERE usuario = ? AND contraseña = ?");
+            pstm = con.prepareStatement("SELECT * FROM usuarios WHERE usuario = ?");
             pstm.setString(1, usuario);
-            pstm.setString(2, contraseña);
             rs = pstm.executeQuery();
             
             while (rs.next()) {                
