@@ -170,7 +170,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     public void existeUsuario(String usuario, String contraseña) {
         ArrayList<Usuario> usuarios = usuariosHarcodeados();
         for (Usuario it : usuarios) {
-            if (usuario.equalsIgnoreCase(it.getUsuario()) && contraseña.equalsIgnoreCase(it.getContrasenia())) {
+            if (usuario.equalsIgnoreCase(it.getUsuario()) && contraseña.equals(it.getContrasenia())) {
                 //irse a la otra ventana
                 ponerCajasOriginal(Caja_contraseña, Caja_usuario);
                 reset();

@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import static modelo.GestorBBDD.controlExisteUsuario;
 import static modelo.GestorBBDD.crearNuevoUsuario;
 
@@ -265,6 +266,7 @@ public class NuevaCuenta extends javax.swing.JFrame {
     private void BotonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVolverActionPerformed
         resetearVentana();
         textoImagenBordePorDefecto();
+        this.dispose();
         //controlar desde donde volver
     }//GEN-LAST:event_BotonVolverActionPerformed
     private void resetearVentana() {
@@ -319,13 +321,25 @@ public class NuevaCuenta extends javax.swing.JFrame {
     }
 
     private boolean correoValido() {
-        Border cruz_rojo = BorderFactory.createLineBorder(Color.RED, 2);
-        NO FUNCIONA EL IF
-        if (CajaCorreo.getBorder() == cruz_rojo ) {
-            JOptionPane.showMessageDialog(this, "El correo es invalido", "Correo Invalido", JOptionPane.ERROR_MESSAGE);
-            return true;
+        //Border cruz_rojo = BorderFactory.createLineBorder(Color.RED, 2);
+        Border correo = CajaCorreo.getBorder();
+
+        //En caso de no poner el correo debo comprobar si el borde del correo es de tipo LineBorder, sino explota
+        if (correo instanceof LineBorder) {
+            //Me creo un objeto LineBorder para poder hacer la comparacion
+            LineBorder linea = (LineBorder) correo;
+
+            //El if compara si el color y el grosor del borde de la caja corresponde con el rojo y grosor 2
+            if (linea.getLineColor().equals(Color.RED) && linea.getThickness() == 2) {
+                JOptionPane.showMessageDialog(this, "La direccion de correo no es valida", "Correo Invalido", JOptionPane.ERROR_MESSAGE);
+                return true;
+            }
         }
         return false;
+    }
+    
+    private void controlNums(){
+        
     }
 
     private void CajaCorreoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CajaCorreoKeyReleased
