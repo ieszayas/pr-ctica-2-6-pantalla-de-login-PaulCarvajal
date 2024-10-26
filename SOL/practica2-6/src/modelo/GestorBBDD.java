@@ -1,6 +1,5 @@
 package modelo;
 
-import com.mysql.cj.jdbc.Driver;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.swing.JOptionPane;
 
 public class GestorBBDD {
 
@@ -218,8 +216,7 @@ public class GestorBBDD {
             }
         }
     }
-    
-    
+     
     public static boolean controlExisteUsuario(String usuario){
         Connection con =  getConexion();
         PreparedStatement pstm = null;
@@ -250,5 +247,30 @@ public class GestorBBDD {
         }
         
         return false;
+    }
+    
+    public static void cambiarContraseña(String contraseña, String usuario){
+        Connection con = getConexion();
+        PreparedStatement pstm = null;
+        
+        try {
+            pstm = con.prepareStatement("UPDATE usuarios SET contraseña = ? WHERE usuario = ?");
+            pstm.setString(1, contraseña);
+            pstm.setString(2, usuario);
+            
+            pstm.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("No se ha podido cambiar la contraseña");
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if(pstm != null){
+                    pstm.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("No se han podido cerrar los recursos");
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }

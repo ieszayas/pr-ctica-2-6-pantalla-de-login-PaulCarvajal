@@ -230,7 +230,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             Caja_contraseña.setEchoChar('*');
         }
     }//GEN-LAST:event_Check_mostrar_contraseñaActionPerformed
-CAMBIAR CONTRASEÑA PARA EL USUARIO?
+
     private void TextoEnlaceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextoEnlaceMouseClicked
         activarVentanaNuevaCuenta();
     }//GEN-LAST:event_TextoEnlaceMouseClicked

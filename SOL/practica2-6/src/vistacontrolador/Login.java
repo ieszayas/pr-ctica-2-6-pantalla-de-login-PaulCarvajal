@@ -1,6 +1,13 @@
 package vistacontrolador;
 
+import javax.swing.JOptionPane;
+import modelo.GestorBBDD;
+import modelo.Usuario;
+import static modelo.Usuario.usuariosHarcodeados;
+
 public class Login extends javax.swing.JFrame {
+
+    private Usuario aux = new Usuario();
 
     public Login() {
         initComponents();
@@ -15,6 +22,7 @@ public class Login extends javax.swing.JFrame {
         Boton_cerrrar_sesion = new javax.swing.JButton();
         Imagen_sesion = new javax.swing.JLabel();
         BotonNuevo = new javax.swing.JButton();
+        BotonCambiarContrasena = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -39,26 +47,34 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        BotonCambiarContrasena.setText("Cambiar contraseña");
+        BotonCambiarContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonCambiarContrasenaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(Texto_Usuario_Logueado, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(Titulo_Bienvenido))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BotonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Boton_cerrrar_sesion, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(Imagen_sesion)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BotonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(53, 53, 53)
+                            .addComponent(Texto_Usuario_Logueado, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(73, 73, 73)
+                            .addComponent(Titulo_Bienvenido))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(21, 21, 21)
+                            .addComponent(Boton_cerrrar_sesion, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(106, 106, 106)
+                            .addComponent(Imagen_sesion)))
+                    .addComponent(BotonCambiarContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -70,9 +86,11 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(Imagen_sesion)
                 .addGap(38, 38, 38)
                 .addComponent(Texto_Usuario_Logueado, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGap(44, 44, 44)
                 .addComponent(BotonNuevo)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(BotonCambiarContrasena)
+                .addGap(27, 27, 27)
                 .addComponent(Boton_cerrrar_sesion)
                 .addGap(20, 20, 20))
         );
@@ -86,10 +104,26 @@ public class Login extends javax.swing.JFrame {
 
     public void setUsuario(String usuario) {
         Texto_Usuario_Logueado.setText("El usuario " + usuario + " esta logueado");
+        aux.setUsuario(usuario);
+        
     }
+
     private void BotonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonNuevoActionPerformed
         activarVentanaNuevaCuenta();
     }//GEN-LAST:event_BotonNuevoActionPerformed
+
+    private void BotonCambiarContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCambiarContrasenaActionPerformed
+        //opcion JOptionPane
+        String nuevaContraseña = JOptionPane.showInputDialog(this, "Introducir la nueva contraseña");
+        String usuario = aux.getUsuario();
+        
+        //en caso de darle cancelar, no modifica nada
+        if (nuevaContraseña != null) {
+            GestorBBDD.cambiarContraseña(nuevaContraseña, usuario);
+            JOptionPane.showMessageDialog(this, "Contraseña de " + aux.getUsuario() + " cambiada correctamente", "Cambio Contraseña", JOptionPane.INFORMATION_MESSAGE);
+        }
+        return;
+    }//GEN-LAST:event_BotonCambiarContrasenaActionPerformed
 
     private void activarVentanaNuevaCuenta() {
         NuevaCuenta n = new NuevaCuenta();
@@ -131,6 +165,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonCambiarContrasena;
     private javax.swing.JButton BotonNuevo;
     private javax.swing.JButton Boton_cerrrar_sesion;
     private javax.swing.JLabel Imagen_sesion;
