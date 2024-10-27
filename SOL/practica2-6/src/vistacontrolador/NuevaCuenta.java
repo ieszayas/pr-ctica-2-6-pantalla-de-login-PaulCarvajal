@@ -302,13 +302,21 @@ public class NuevaCuenta extends javax.swing.JFrame {
 
     //CONTROLES
     private boolean camposVacios() {
+        boolean error = false;
         //compruebo campos vacios antes de ver si existe en la BD
-        if (CajaTextoNewUsuario.getText().isEmpty() || CajaTextoNewContra.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Alguno de los campos estan vacios", "Campos Vacios", JOptionPane.ERROR_MESSAGE);
-            return true;
+        if (CajaTextoNewUsuario.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Usuario no puede estar vacio", "Campos Vacios", JOptionPane.ERROR_MESSAGE);
+            error = true;
         }
-        return false;
+
+        if (CajaTextoNewContra.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Contraseña no puede estar vacio", "Campos Vacios", JOptionPane.ERROR_MESSAGE);
+            error = true;
+        }
+
+        return error;
     }
+
     private boolean existeUsuario() {
         if (controlExisteUsuario(CajaTextoNewUsuario.getText())) {
             JOptionPane.showMessageDialog(this, "El usuario " + CajaTextoNewUsuario.getText() + " ya existe en el sistema", "Usuario Repetido", JOptionPane.ERROR_MESSAGE);
@@ -316,6 +324,7 @@ public class NuevaCuenta extends javax.swing.JFrame {
         }
         return false;
     }
+
     private boolean contraseñaCoincide() {
         if (!CajaTextoNewContra.getText().equals(CajaConfContraseña.getText())) {
             JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden", "Contraseñas no iguales", JOptionPane.ERROR_MESSAGE);
@@ -323,6 +332,7 @@ public class NuevaCuenta extends javax.swing.JFrame {
         }
         return false;
     }
+
     private boolean controlNums(JTextField j) {
         //si esta vacio al ser un campo opcional, no hacer el control de los numericos
         if (!j.getText().isEmpty()) {
@@ -334,17 +344,19 @@ public class NuevaCuenta extends javax.swing.JFrame {
         }
         return false;
     }
+
     private boolean controlFecha(Date d) {
         Date fechaLimite = new Date();
         if (d != null) {
             //compara la fecha introducida con la fecha actual
             if (d.getTime() > fechaLimite.getTime()) {
-                JOptionPane.showMessageDialog(this, "La fecha no puede ser superior a la actual", "Fecha Erronea", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "La fecha no puede ser superior a la fecha actual", "Fecha Erronea", JOptionPane.ERROR_MESSAGE);
                 return true;
             }
         }
         return false;
     }
+
     private boolean correoValido() {
         //Border cruz_rojo = BorderFactory.createLineBorder(Color.RED, 2);
         Border correo = CajaCorreo.getBorder();

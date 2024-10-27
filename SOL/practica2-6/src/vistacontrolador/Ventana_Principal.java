@@ -16,7 +16,6 @@ import static modelo.Usuario.usuariosHarcodeados;
 public class Ventana_Principal extends javax.swing.JFrame {
 
     public Ventana_Principal() {
-
         initComponents();
         TextoEnlace.setText("<html><a href=''>Hacer click para crear una nueva cuenta</a></html>");
         //TextoEnlace.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
