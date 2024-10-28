@@ -1,5 +1,8 @@
 package modelo;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,6 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GestorBBDD {
 
@@ -22,14 +28,30 @@ public class GestorBBDD {
             try {
                 //Establecer conexión JDBC
                 //se debe conectar al puerto 3306
-                String url = "jdbc:mysql://localhost:3306";
-                String usuario = "root";
-                String contrasenia = null;
+//                String url = "jdbc:mysql://localhost:3306";
+//                String usuario = "root";
+//                String contrasenia = null;
+
+                //formato con Propierties
+                FileInputStream fis = new FileInputStream("CONFIGURACION/config.properties");
+                Properties propiedades = new Properties();
+                propiedades.load(fis);
+                
+                String url = propiedades.getProperty("url");
+                String usuario = propiedades.getProperty("username");
+                String contrasenia = propiedades.getProperty("password");
+                
                 con = DriverManager.getConnection(url, usuario, contrasenia); //la contraseña de root es null
+                
                 System.out.println("Conexion Exitosa con la base de datos");
             } catch (SQLException e) {
                 System.out.println("Error al crear la conexion" + e.toString());
                 e.printStackTrace();//muestra toda la info de la excepcion en rojo
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(GestorBBDD.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(GestorBBDD.class.getName()).log(Level.SEVERE, null, ex);
+            
             }
         }
         return con;
