@@ -86,13 +86,13 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(Imagen_sesion)
                 .addGap(38, 38, 38)
                 .addComponent(Texto_Usuario_Logueado, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(18, 18, 18)
                 .addComponent(BotonNuevo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(BotonCambiarContrasena)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(Boton_cerrrar_sesion)
-                .addGap(20, 20, 20))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();

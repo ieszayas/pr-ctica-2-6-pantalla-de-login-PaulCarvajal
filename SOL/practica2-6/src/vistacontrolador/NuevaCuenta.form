@@ -73,20 +73,16 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="TextoErrorContra" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="TextoContraseña" min="-2" max="-2" attributes="0"/>
-                                      <Component id="TextoUsuario" min="-2" max="-2" attributes="0"/>
-                                      <Component id="TextoConfContra" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="CajaTextoNewContra" min="-2" pref="133" max="-2" attributes="0"/>
-                                      <Component id="CajaTextoNewUsuario" min="-2" pref="133" max="-2" attributes="0"/>
-                                      <Component id="CajaConfContraseña" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="TextoContraseña" min="-2" max="-2" attributes="0"/>
+                              <Component id="TextoUsuario" min="-2" max="-2" attributes="0"/>
+                              <Component id="TextoConfContra" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="CajaTextoNewContra" min="-2" pref="133" max="-2" attributes="0"/>
+                              <Component id="CajaTextoNewUsuario" min="-2" pref="133" max="-2" attributes="0"/>
+                              <Component id="CajaConfContraseña" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
+                              <Component id="TextoErrorContra" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -201,7 +197,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="TextoErrorContra">
       <Properties>
-        <Property name="text" type="java.lang.String" value="*La contrase&#xf1;a no coincide"/>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="*Las dos contrase&#xf1;as no coinciden"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="TextoOpcional">
@@ -221,6 +220,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="TextoConfirmacion">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="*Escribe una direccion de correo valida"/>
       </Properties>
     </Component>
@@ -257,6 +259,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="CajaTextoNewUsuario">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="Usuario" noResource="true"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="TextoApellido">
       <Properties>
@@ -264,6 +269,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="CajaTextoNewContra">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="Contrase&#xf1;a" noResource="true"/>
+      </Properties>
       <Events>
         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CajaTextoNewContraKeyReleased"/>
       </Events>

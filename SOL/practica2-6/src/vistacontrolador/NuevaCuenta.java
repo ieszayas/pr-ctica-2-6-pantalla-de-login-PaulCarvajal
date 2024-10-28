@@ -76,7 +76,8 @@ public class NuevaCuenta extends javax.swing.JFrame {
             }
         });
 
-        TextoErrorContra.setText("*La contraseña no coincide");
+        TextoErrorContra.setForeground(new java.awt.Color(255, 0, 0));
+        TextoErrorContra.setText("*Las dos contraseñas no coinciden");
 
         TextoOpcional.setText("Agregar datos opcionales del nuevo usuario:");
 
@@ -84,6 +85,7 @@ public class NuevaCuenta extends javax.swing.JFrame {
 
         CajaNombre.setName("Nombre"); // NOI18N
 
+        TextoConfirmacion.setForeground(new java.awt.Color(255, 0, 0));
         TextoConfirmacion.setText("*Escribe una direccion de correo valida");
 
         CajaApellido.setName("Apellido"); // NOI18N
@@ -102,8 +104,11 @@ public class NuevaCuenta extends javax.swing.JFrame {
 
         TextoNombre.setText("Nombre:");
 
+        CajaTextoNewUsuario.setName("Usuario"); // NOI18N
+
         TextoApellido.setText("Apellido:");
 
+        CajaTextoNewContra.setName("Contraseña"); // NOI18N
         CajaTextoNewContra.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 CajaTextoNewContraKeyReleased(evt);
@@ -155,17 +160,15 @@ public class NuevaCuenta extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(19, 19, 19)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(TextoErrorContra)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(TextoContraseña)
-                                        .addComponent(TextoUsuario)
-                                        .addComponent(TextoConfContra))
-                                    .addGap(60, 60, 60)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(CajaTextoNewContra, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(CajaTextoNewUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(CajaConfContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addComponent(TextoContraseña)
+                                .addComponent(TextoUsuario)
+                                .addComponent(TextoConfContra))
+                            .addGap(60, 60, 60)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(CajaTextoNewContra, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(CajaTextoNewUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(CajaConfContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(TextoErrorContra))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(85, 85, 85)
                         .addComponent(TextoOpcional)))
@@ -272,7 +275,7 @@ public class NuevaCuenta extends javax.swing.JFrame {
         resetearVentana();
         textoImagenBordePorDefecto();
         this.dispose();
-        //controlar desde donde volver
+
     }//GEN-LAST:event_BotonVolverActionPerformed
     private void resetearVentana() {
         Border defecto = CajaApellido.getBorder();
@@ -280,8 +283,10 @@ public class NuevaCuenta extends javax.swing.JFrame {
         CajaTextoNewContra.setText("");
         CajaTextoNewContra.setBorder(defecto);
         CajaConfContraseña.setText("");
-        CajaConfContraseña.setBorder(defecto);
-        TextoErrorContra.setVisible(false);
+        esconderMostrarTextos(TextoErrorContra, false);
+        esconderMostrarTextos(TextoConfirmacion, false);
+        ImagenCheck.setVisible(false);
+        ponerCajasOriginal(CajaCorreo, CajaConfContraseña);
         CajaNombre.setText("");
         CajaApellido.setText("");
         CajaCorreo.setText("");
@@ -291,29 +296,55 @@ public class NuevaCuenta extends javax.swing.JFrame {
 
     private void BotonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarActionPerformed
         //controles antes de crear el nuevo usuario
-        if (camposVacios() || existeUsuario() || contraseñaCoincide() || controlNums(CajaNombre) || controlNums(CajaApellido) || controlFecha(CajaFechaNacimiento.getDate()) || correoValido()) {
+        //datos obligatorios:
+        if (camposVacios() || caracteresMaxMin(CajaTextoNewUsuario, 3, 15) || caracteresMaxMin(CajaTextoNewContra, 4, 15) || existeUsuario() || contraseñaCoincide()) {
             return;
         }
 
-        //FechaNacimiento.setDateFormatString("yyyy-MM-dd");
+        //controles datos opcionales:
+        if (caracteresMaxMin(CajaNombre, 3, 15) || controlSimbolos(CajaNombre) || caracteresMaxMin(CajaApellido, 3, 19) || controlSimbolos(CajaApellido) || controlFecha(CajaFechaNacimiento.getDate()) || correoValido()) {
+            return;
+        }
+
         crearNuevoUsuario(CajaTextoNewUsuario.getText(), CajaTextoNewContra.getText(), CajaNombre.getText(), CajaApellido.getText(), CajaFechaNacimiento.getDate(), CajaCorreo.getText());
         JOptionPane.showMessageDialog(this, "Se ha creado correctamente el usuario " + CajaTextoNewUsuario.getText(), "Usuario Registrado", JOptionPane.INFORMATION_MESSAGE);
+        resetearVentana();
     }//GEN-LAST:event_BotonAgregarActionPerformed
 
-    //CONTROLES
+    //CONTROLES DATOS OBLIGATORIOS
     private boolean camposVacios() {
         boolean error = false;
         //compruebo campos vacios antes de ver si existe en la BD
-        if (CajaTextoNewUsuario.getText().isEmpty()) {
+        if (CajaTextoNewUsuario.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "El campo Usuario no puede estar vacio", "Campos Vacios", JOptionPane.ERROR_MESSAGE);
             error = true;
+            return error;
         }
 
-        if (CajaTextoNewContra.getText().isEmpty()) {
+        if (CajaTextoNewContra.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "El campo Contraseña no puede estar vacio", "Campos Vacios", JOptionPane.ERROR_MESSAGE);
             error = true;
         }
 
+        return error;
+    }
+
+    private boolean caracteresMaxMin(JTextField j, int min, int max) {
+        boolean error = false;
+        
+        //si esta vacio al ser un campo opcional, no hacer el control de los caracteres
+        if (!j.getText().trim().isEmpty()) {
+            
+            if (j.getText().trim().length() < min) {
+                JOptionPane.showMessageDialog(this, "El campo " + j.getName() + " debe tener un minimo de " + min + " caracteres", "Caracteres insuficientes", JOptionPane.ERROR_MESSAGE);
+                error = true;
+            }
+
+            if (j.getText().trim().length() > max) {
+                JOptionPane.showMessageDialog(this, "El " + j.getName() + " no puede tener más de " + max + " caracteres", "Demasiados caracteres", JOptionPane.ERROR_MESSAGE);
+                error = true;
+            }
+        }
         return error;
     }
 
@@ -333,12 +364,13 @@ public class NuevaCuenta extends javax.swing.JFrame {
         return false;
     }
 
-    private boolean controlNums(JTextField j) {
+    //CONTROLES DATOS OPCIONALES
+    private boolean controlSimbolos(JTextField j) {
         //si esta vacio al ser un campo opcional, no hacer el control de los numericos
         if (!j.getText().isEmpty()) {
-            //ninguno de los campos debe tener un simbolo numerico
+            //ninguno de los campos debe tener un caracter numerico o especial
             if (!j.getText().matches("^[a-zA-Z]+$")) {
-                JOptionPane.showMessageDialog(this, "El campo " + j.getName() + " no puede tener simbolos numericos", "Formato incorrecto", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El campo " + j.getName() + " no puede tener caracteres especiales o numericos", "Formato incorrecto", JOptionPane.ERROR_MESSAGE);
                 return true;
             }
         }
@@ -396,12 +428,14 @@ public class NuevaCuenta extends javax.swing.JFrame {
             Imagen_visible();
             ImagenCheck.setIcon(cruz);
             esconderMostrarTextos(TextoConfirmacion, true);
+            TextoConfirmacion.setForeground(Color.red);
             TextoConfirmacion.setText("* Escribe una direccion de correo valida");
 
         } else {
             CajaCorreo.setBorder(check_verde);
             Imagen_visible();
             ImagenCheck.setIcon(check);
+            TextoConfirmacion.setForeground(Color.GREEN);
             TextoConfirmacion.setText("Correo verificado correctamente");
 
         }

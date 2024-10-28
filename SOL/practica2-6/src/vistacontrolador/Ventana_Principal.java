@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.border.Border;
 import static modelo.GestorBBDD.crearBD;
 import modelo.Usuario;
@@ -17,8 +18,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     public Ventana_Principal() {
         initComponents();
-        TextoEnlace.setText("<html><a href=''>Hacer click para crear una nueva cuenta</a></html>");
-        //TextoEnlace.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         TextoError.setVisible(false);
         Defecto.setVisible(false);
         crearBD();
@@ -75,14 +74,21 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
-        TextoEnlace.setText("Hacer click para crear una nueva cuenta");
+        TextoEnlace.setText("Hacer click aqui para crear una nueva cuenta");
         TextoEnlace.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         TextoEnlace.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TextoEnlaceMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                TextoEnlaceMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                TextoEnlaceMouseExited(evt);
+            }
         });
 
+        TextoError.setForeground(new java.awt.Color(255, 0, 0));
         TextoError.setText("*Credenciales incorrectas");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -116,9 +122,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
                                 .addGap(154, 154, 154))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(Defecto, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addComponent(TextoEnlace, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                .addGap(52, 52, 52))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,12 +167,13 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         //compruebo campos vacios antes de ver si existe en la BD
         if (Caja_usuario.getText().isEmpty() || contraseña.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Alguno de los campos estan vacios", "Campos Vacios", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El usuario o la contraseña estan vacios", "Campos Vacios", JOptionPane.ERROR_MESSAGE);
+            vibrarVentana(this, 9, 50);
             return;
         }
         existeUsuario(usuario, contraseña);
     }//GEN-LAST:event_Boton_loginActionPerformed
-    
+
     public void existeUsuario(String usuario, String contraseña) {
         ArrayList<Usuario> usuarios = usuariosHarcodeados();
         for (Usuario it : usuarios) {
@@ -183,8 +190,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         }
 
-
-        JOptionPane.showMessageDialog(null, "El usuario no existe" + "\n" + "Por favor vuelva a introducir las credenciales", "Usuario no encontrado", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null, "El usuario o la contraseña no son correctos" + "\n" + "Por favor vuelva a introducir las credenciales", "Usuario no encontrado", JOptionPane.WARNING_MESSAGE);
 
         //intensidad y duracion
         vibrarVentana(this, 9, 50);
@@ -229,17 +235,15 @@ public class Ventana_Principal extends javax.swing.JFrame {
             Caja_contraseña.setEchoChar('*');
         }
     }//GEN-LAST:event_Check_mostrar_contraseñaActionPerformed
-
-    private void TextoEnlaceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextoEnlaceMouseClicked
-        activarVentanaNuevaCuenta();
-    }//GEN-LAST:event_TextoEnlaceMouseClicked
+    
+    
     private void activarVentanaNuevaCuenta() {
         NuevaCuenta n = new NuevaCuenta();
         n.setLocationRelativeTo(this);
         n.setResizable(false);
         n.setVisible(true);
     }
-    
+
     private void Caja_usuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Caja_usuarioKeyReleased
         ponerCajasOriginal(Caja_usuario, Caja_contraseña);
         TextoError.setVisible(false);
@@ -249,6 +253,18 @@ public class Ventana_Principal extends javax.swing.JFrame {
         ponerCajasOriginal(Caja_usuario, Caja_contraseña);
         TextoError.setVisible(false);
     }//GEN-LAST:event_Caja_contraseñaKeyReleased
+
+    private void TextoEnlaceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextoEnlaceMouseEntered
+        TextoEnlace.setText("<html><a href=''>Hacer click aqui para crear una nueva cuenta</a></html>");
+    }//GEN-LAST:event_TextoEnlaceMouseEntered
+
+    private void TextoEnlaceMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextoEnlaceMouseExited
+        TextoEnlace.setText("Hacer click aqui para crear una nueva cuenta");
+    }//GEN-LAST:event_TextoEnlaceMouseExited
+
+    private void TextoEnlaceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextoEnlaceMouseClicked
+       activarVentanaNuevaCuenta();
+    }//GEN-LAST:event_TextoEnlaceMouseClicked
 
     public void vibrarVentana(JFrame frame, int intensidad, int duracion) {
         Point puntoOriginal = frame.getLocation();
@@ -294,6 +310,14 @@ public class Ventana_Principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                try {
+                    //UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+                    UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+                    //UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+                    //UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 new Ventana_Principal().setVisible(true);
 
             }

@@ -63,9 +63,9 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <Component id="Defecto" min="-2" pref="6" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="75" max="32767" attributes="0"/>
               <Component id="TextoEnlace" min="-2" pref="267" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -146,17 +146,22 @@
     </Component>
     <Component class="javax.swing.JLabel" name="TextoEnlace">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Hacer click para crear una nueva cuenta"/>
+        <Property name="text" type="java.lang.String" value="Hacer click aqui para crear una nueva cuenta"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Hand Cursor"/>
         </Property>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TextoEnlaceMouseClicked"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TextoEnlaceMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TextoEnlaceMouseExited"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="TextoError">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="*Credenciales incorrectas"/>
       </Properties>
     </Component>
