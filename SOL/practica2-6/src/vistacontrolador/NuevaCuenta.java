@@ -1,6 +1,9 @@
 package vistacontrolador;
 
+import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -19,6 +22,7 @@ public class NuevaCuenta extends javax.swing.JFrame {
         TextoErrorContra.setVisible(false);
         ImagenCheck.setVisible(false);
         esconderMostrarTextos(TextoConfirmacion, false);
+        CajaFechaNacimiento.getDateEditor().setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -156,7 +160,8 @@ public class NuevaCuenta extends javax.swing.JFrame {
                                     .addGap(76, 76, 76)
                                     .addComponent(BotonVolver)
                                     .addGap(60, 60, 60)
-                                    .addComponent(BotonAgregar))))
+                                    .addComponent(BotonAgregar)))
+                            .addGap(48, 48, 48))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(19, 19, 19)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -172,7 +177,7 @@ public class NuevaCuenta extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(85, 85, 85)
                         .addComponent(TextoOpcional)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,10 +336,10 @@ public class NuevaCuenta extends javax.swing.JFrame {
 
     private boolean caracteresMaxMin(JTextField j, int min, int max) {
         boolean error = false;
-        
+
         //si esta vacio al ser un campo opcional, no hacer el control de los caracteres
         if (!j.getText().trim().isEmpty()) {
-            
+
             if (j.getText().trim().length() < min) {
                 JOptionPane.showMessageDialog(this, "El campo " + j.getName() + " debe tener un minimo de " + min + " caracteres", "Caracteres insuficientes", JOptionPane.ERROR_MESSAGE);
                 error = true;
@@ -386,8 +391,11 @@ public class NuevaCuenta extends javax.swing.JFrame {
                 return true;
             }
         }
+
         return false;
+
     }
+
 
     private boolean correoValido() {
         //Border cruz_rojo = BorderFactory.createLineBorder(Color.RED, 2);
@@ -417,7 +425,7 @@ public class NuevaCuenta extends javax.swing.JFrame {
         String regex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{3,4}$";
 
         //Cuando esta vacio no muestro nada y lo dejo sin imagen ni mensaje de confirmacion
-        if (CajaCorreo.getText().equals("")) {
+        if (CajaCorreo.getText().trim().isEmpty()) {
             textoImagenBordePorDefecto();
             return;
         }
