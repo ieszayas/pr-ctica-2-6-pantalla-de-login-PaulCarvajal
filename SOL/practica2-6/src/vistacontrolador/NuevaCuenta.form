@@ -40,51 +40,55 @@
                               </Group>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="TextoApellido" min="-2" max="-2" attributes="0"/>
-                                      <Component id="TextoFecha" min="-2" max="-2" attributes="0"/>
-                                      <Component id="TextoNombre" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="TextoCorreo" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="CajaApellido" min="-2" pref="132" max="-2" attributes="0"/>
-                                      <Component id="CajaNombre" min="-2" pref="132" max="-2" attributes="0"/>
-                                      <Component id="CajaFechaNacimiento" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="CajaCorreo" min="-2" pref="132" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="ImagenCheck" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="TextoApellido" min="-2" max="-2" attributes="0"/>
+                                              <Component id="TextoFecha" min="-2" max="-2" attributes="0"/>
+                                              <Component id="TextoNombre" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="TextoCorreo" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="CajaApellido" min="-2" pref="132" max="-2" attributes="0"/>
+                                              <Component id="CajaNombre" min="-2" pref="132" max="-2" attributes="0"/>
+                                              <Component id="CajaFechaNacimiento" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="CajaCorreo" min="-2" pref="132" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="ImagenCheck" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                                          <Component id="BotonVolver" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                          <Component id="BotonAgregar" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                                  <Component id="BotonVolver" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="TextoContraseña" min="-2" max="-2" attributes="0"/>
+                                      <Component id="TextoUsuario" min="-2" max="-2" attributes="0"/>
+                                      <Component id="TextoConfContra" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                                  <Component id="BotonAgregar" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="CajaTextoNewContra" min="-2" pref="133" max="-2" attributes="0"/>
+                                      <Component id="CajaTextoNewUsuario" min="-2" pref="133" max="-2" attributes="0"/>
+                                      <Component id="CajaConfContraseña" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
+                                      <Component id="TextoErrorContra" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="TextoContraseña" min="-2" max="-2" attributes="0"/>
-                              <Component id="TextoUsuario" min="-2" max="-2" attributes="0"/>
-                              <Component id="TextoConfContra" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="CajaTextoNewContra" min="-2" pref="133" max="-2" attributes="0"/>
-                              <Component id="CajaTextoNewUsuario" min="-2" pref="133" max="-2" attributes="0"/>
-                              <Component id="CajaConfContraseña" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
-                              <Component id="TextoErrorContra" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">

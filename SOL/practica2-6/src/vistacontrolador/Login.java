@@ -3,7 +3,6 @@ package vistacontrolador;
 import javax.swing.JOptionPane;
 import modelo.GestorBBDD;
 import modelo.Usuario;
-import static modelo.Usuario.usuariosHarcodeados;
 
 public class Login extends javax.swing.JFrame {
 
