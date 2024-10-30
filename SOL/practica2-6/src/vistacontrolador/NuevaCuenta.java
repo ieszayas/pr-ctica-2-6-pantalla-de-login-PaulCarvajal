@@ -330,7 +330,6 @@ public class NuevaCuenta extends javax.swing.JFrame {
 
         return error;
     }
-
     private boolean caracteresMaxMin(JTextField j, int min, int max) {
         boolean error = false;
 
@@ -349,7 +348,6 @@ public class NuevaCuenta extends javax.swing.JFrame {
         }
         return error;
     }
-
     private boolean existeUsuario() {
         if (controlExisteUsuario(CajaTextoNewUsuario.getText())) {
             JOptionPane.showMessageDialog(this, "El usuario " + CajaTextoNewUsuario.getText() + " ya existe en el sistema", "Usuario Repetido", JOptionPane.ERROR_MESSAGE);
@@ -378,7 +376,6 @@ public class NuevaCuenta extends javax.swing.JFrame {
         }
         return false;
     }
-
     private boolean controlFecha(Date d) {
         Date fechaLimite = new Date();
         if (d != null) {
@@ -392,8 +389,6 @@ public class NuevaCuenta extends javax.swing.JFrame {
         return false;
 
     }
-
-
     private boolean correoValido() {
         //Border cruz_rojo = BorderFactory.createLineBorder(Color.RED, 2);
         Border correo = CajaCorreo.getBorder();
