@@ -112,16 +112,22 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonNuevoActionPerformed
 
     private void BotonCambiarContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCambiarContrasenaActionPerformed
-        //opcion JOptionPane
-        String nuevaContraseña = JOptionPane.showInputDialog(this, "Introducir la nueva contraseña");
-        String usuario = aux.getUsuario();
+//        //opcion JOptionPane
+//        String nuevaContraseña = JOptionPane.showInputDialog(this, "Introducir la nueva contraseña");
+//        String usuario = aux.getUsuario();
+//        
+//        //en caso de darle cancelar, no modifica nada
+//        if (nuevaContraseña != null) {
+//            GestorBBDD.cambiarContraseña(nuevaContraseña, usuario);
+//            JOptionPane.showMessageDialog(this, "Contraseña de " + aux.getUsuario() + " cambiada correctamente", "Cambio Contraseña", JOptionPane.INFORMATION_MESSAGE);
+//        }
+//        
         
-        //en caso de darle cancelar, no modifica nada
-        if (nuevaContraseña != null) {
-            GestorBBDD.cambiarContraseña(nuevaContraseña, usuario);
-            JOptionPane.showMessageDialog(this, "Contraseña de " + aux.getUsuario() + " cambiada correctamente", "Cambio Contraseña", JOptionPane.INFORMATION_MESSAGE);
-        }
-        return;
+        
+        Ventana_CambiarContraseña ven = new Ventana_CambiarContraseña(aux.getUsuario());
+        ven.setLocationRelativeTo(this);
+        ven.setVisible(true);
+        
     }//GEN-LAST:event_BotonCambiarContrasenaActionPerformed
 
     private void activarVentanaNuevaCuenta() {
